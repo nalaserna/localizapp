@@ -20,6 +20,6 @@ public interface PoligonoRepository extends CrudRepository<Poligono, Long> {
 	
 	public List<Poligono> findByNombre(String nombre);
 	
-	public List<Poligono> findByPolygon(Byte[] polygon);
+	public List<Poligono> findByPolygon(byte[] polygon);
 	
 }
