@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,14 +18,15 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario", catalog = "localizapp")
 public class Usuario implements java.io.Serializable {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idusuario;
 	private String nombre;
 	private String apellido;
 	private String correo;
 	private String password;
 	private Byte esAdmin;
-	private Set<Punto> puntos = new HashSet<Punto>(0);
 
 	public Usuario() {
 	}
@@ -36,15 +39,13 @@ public class Usuario implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public Usuario(int idusuario, String nombre, String apellido, String correo, String password, Byte esAdmin,
-			Set<Punto> puntos) {
+	public Usuario(int idusuario, String nombre, String apellido, String correo, String password, Byte esAdmin) {
 		this.idusuario = idusuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correo = correo;
 		this.password = password;
 		this.esAdmin = esAdmin;
-		this.puntos = puntos;
 	}
 
 	@Id
@@ -101,15 +102,6 @@ public class Usuario implements java.io.Serializable {
 
 	public void setEsAdmin(Byte esAdmin) {
 		this.esAdmin = esAdmin;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set<Punto> getPuntos() {
-		return this.puntos;
-	}
-
-	public void setPuntos(Set<Punto> puntos) {
-		this.puntos = puntos;
 	}
 
 }

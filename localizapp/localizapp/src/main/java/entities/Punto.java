@@ -6,10 +6,13 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,12 +22,19 @@ import javax.persistence.Table;
 @Table(name = "punto", catalog = "localizapp")
 public class Punto implements java.io.Serializable {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idpunto;
+	
+	@OneToOne(fetch = FetchType.EAGER)
 	private Evento evento;
+	
+	@OneToOne(fetch = FetchType.EAGER)
 	private Usuario usuario;
+	
 	private String nombre;
 	private byte[] coordenadas;
-	private Set<Funcion> funcions = new HashSet<Funcion>(0);
+
 
 	public Punto() {
 	}
@@ -37,17 +47,7 @@ public class Punto implements java.io.Serializable {
 		this.coordenadas = coordenadas;
 	}
 
-	public Punto(int idpunto, Evento evento, Usuario usuario, String nombre, byte[] coordenadas,
-			Set<Funcion> funcions) {
-		this.idpunto = idpunto;
-		this.evento = evento;
-		this.usuario = usuario;
-		this.nombre = nombre;
-		this.coordenadas = coordenadas;
-		this.funcions = funcions;
-	}
 
-	@Id
 
 	@Column(name = "idpunto", unique = true, nullable = false)
 	public int getIdpunto() {
@@ -58,8 +58,9 @@ public class Punto implements java.io.Serializable {
 		this.idpunto = idpunto;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "evento_idevento", nullable = false)
+	/*@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "evento_idevento", nullable = false)*/
+	@Column(name = "id_evento", nullable = false)
 	public Evento getEvento() {
 		return this.evento;
 	}
@@ -68,8 +69,9 @@ public class Punto implements java.io.Serializable {
 		this.evento = evento;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "usuario_idusuario", nullable = false)
+	/*@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "usuario_idusuario", nullable = false)*/
+	@Column(name="id_usuario", nullable = false)
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
@@ -96,13 +98,5 @@ public class Punto implements java.io.Serializable {
 		this.coordenadas = coordenadas;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "punto")
-	public Set<Funcion> getFuncions() {
-		return this.funcions;
-	}
-
-	public void setFuncions(Set<Funcion> funcions) {
-		this.funcions = funcions;
-	}
 
 }
