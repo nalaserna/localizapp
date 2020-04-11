@@ -73,7 +73,7 @@ public class Funcion implements java.io.Serializable {
 	}
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name = "fecha_inicio", nullable = false, length = 10)
+	@Column(name = "fecha_inicio", nullable = true, length = 10)
 	public Date getFechaInicio() {
 		return this.fechaInicio;
 	}
@@ -83,7 +83,7 @@ public class Funcion implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "fecha_fin", nullable = false, length = 10)
+	@Column(name = "fecha_fin", nullable = true, length = 10)
 	public Date getFechaFin() {
 		return this.fechaFin;
 	}
