@@ -19,6 +19,6 @@ public interface PuntoRepository extends CrudRepository<Punto, Long> {
 	
 	public List<Punto> findByNombre(String nombre);
 	
-	public List<Punto> findByCoordenadas(Byte[] coordenadas);
+	public List<Punto> findByCoordenadas(byte[] coordenadas);
 	
 }
