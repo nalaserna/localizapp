@@ -9,7 +9,7 @@ import entities.Punto;
 import entities.Usuario;
 
 @Repository
-public interface PuntoRepository extends CrudRepository<Usuario, Long> {
+public interface PuntoRepository extends CrudRepository<Punto, Long> {
 	
 	public Punto findById(int id);
 	
@@ -19,6 +19,6 @@ public interface PuntoRepository extends CrudRepository<Usuario, Long> {
 	
 	public List<Punto> findByNombre(String nombre);
 	
-	public List<Punto> findByCoordenadas(Byte coordenadas);
+	public List<Punto> findByCoordenadas(Byte[] coordenadas);
 	
 }
