@@ -57,9 +57,8 @@ public class Evento implements java.io.Serializable {
 		this.puntos = puntos;
 	}
 
-	@Id
-
-	@Column(name = "idevento", unique = true, nullable = false)
+	
+	/*@Column(name = "idevento", unique = true, nullable = false)*/
 	public int getIdevento() {
 		return this.idevento;
 	}

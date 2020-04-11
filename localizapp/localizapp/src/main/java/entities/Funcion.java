@@ -4,9 +4,12 @@ package entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -16,9 +19,16 @@ import javax.persistence.Table;
 @Table(name = "funcion", catalog = "localizapp")
 public class Funcion implements java.io.Serializable {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idfuncion;
+	
+	@OneToOne(fetch = FetchType.EAGER)
 	private Poligono poligono;
+	
+	@OneToOne(fetch = FetchType.EAGER)
 	private Punto punto;
+	
 	private String horaInicio;
 	private String horaFin;
 	private String nombre;
@@ -46,9 +56,7 @@ public class Funcion implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	@Id
-
-	@Column(name = "idfuncion", unique = true, nullable = false)
+	/*@Column(name = "idfuncion", unique = true, nullable = false)*/
 	public int getIdfuncion() {
 		return this.idfuncion;
 	}
@@ -57,8 +65,7 @@ public class Funcion implements java.io.Serializable {
 		this.idfuncion = idfuncion;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "poligono_idpoligono")
+	@Column(name = "id_poligono", nullable=true)
 	public Poligono getPoligono() {
 		return this.poligono;
 	}
@@ -67,8 +74,7 @@ public class Funcion implements java.io.Serializable {
 		this.poligono = poligono;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "punto_idpunto")
+	@Column(name = "id_punto", nullable=true)
 	public Punto getPunto() {
 		return this.punto;
 	}

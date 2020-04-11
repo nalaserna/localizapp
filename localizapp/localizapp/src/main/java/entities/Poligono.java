@@ -45,7 +45,7 @@ public class Poligono implements java.io.Serializable {
 	}
 
 
-	@Column(name = "idpoligono", unique = true, nullable = false)
+	/*@Column(name = "idpoligono", unique = true, nullable = false)*/
 	public int getIdpoligono() {
 		return this.idpoligono;
 	}

@@ -49,7 +49,7 @@ public class Punto implements java.io.Serializable {
 
 
 
-	@Column(name = "idpunto", unique = true, nullable = false)
+	/*@Column(name = "idpunto", unique = true, nullable = false)*/
 	public int getIdpunto() {
 		return this.idpunto;
 	}
