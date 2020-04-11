@@ -24,6 +24,4 @@ public interface EventoRepository extends CrudRepository<Evento, Long> {
 	
 	public List<Evento> findByHoraFin(String horaFin);
 	
-	public Usuario findByCorreo(String correo);
-	
 }
