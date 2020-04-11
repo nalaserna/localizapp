@@ -6,10 +6,13 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -19,12 +22,16 @@ import javax.persistence.Table;
 @Table(name = "poligono", catalog = "localizapp")
 public class Poligono implements java.io.Serializable {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idpoligono;
+	
+	@OneToOne(fetch = FetchType.EAGER)
 	private Evento evento;
+	
 	private String nombre;
 	private byte[] polygon;
 	private String descripcion;
-	private Set<Funcion> funcions = new HashSet<Funcion>(0);
 
 	public Poligono() {
 	}
@@ -37,17 +44,6 @@ public class Poligono implements java.io.Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Poligono(int idpoligono, Evento evento, String nombre, byte[] polygon, String descripcion,
-			Set<Funcion> funcions) {
-		this.idpoligono = idpoligono;
-		this.evento = evento;
-		this.nombre = nombre;
-		this.polygon = polygon;
-		this.descripcion = descripcion;
-		this.funcions = funcions;
-	}
-
-	@Id
 
 	@Column(name = "idpoligono", unique = true, nullable = false)
 	public int getIdpoligono() {
@@ -58,8 +54,9 @@ public class Poligono implements java.io.Serializable {
 		this.idpoligono = idpoligono;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "evento_idevento", nullable = false)
+	/*@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "evento_idevento", nullable = false)*/
+	@Column(name = "id_evento", nullable = false)
 	public Evento getEvento() {
 		return this.evento;
 	}
@@ -93,15 +90,6 @@ public class Poligono implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "poligono")
-	public Set<Funcion> getFuncions() {
-		return this.funcions;
-	}
-
-	public void setFuncions(Set<Funcion> funcions) {
-		this.funcions = funcions;
 	}
 
 }
