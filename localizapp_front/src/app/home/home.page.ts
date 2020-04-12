@@ -65,6 +65,10 @@ ngOnInit(){
       })
     }
 
+    public verMisEventos(){
+      this.router.navigate(['/misEventos']);
+    }
+
     
 }
 
