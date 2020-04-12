@@ -15,6 +15,7 @@ export class HomePage {
   latitud : number;
   longitud : number;
   
+  
   constructor(
               private geolocation: Geolocation,
               public plt: Platform,
@@ -51,16 +52,6 @@ ngOnInit(){
       marker([this.latitud, this.longitud], {icon: customMarkerIcon})
       .bindPopup(`Muéveme y haz click para agregar un punto`, { autoClose: false }).addTo(map).openPopup();        
     }
-
-
-    
-     
-    // let watch = this.geolocation.watchPosition();
-    // watch.subscribe((data) => {
-      // data can be a set of coordinates, or an error (if an error occurred).
-      // data.coords.latitude
-      // data.coords.longitude
-    // });
 
     
 }
