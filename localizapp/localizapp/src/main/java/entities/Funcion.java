@@ -27,7 +27,7 @@ public class Funcion implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idfuncion;
+	private int id;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	private Poligono poligono;
@@ -53,7 +53,7 @@ public class Funcion implements java.io.Serializable {
 	public Funcion(int idfuncion, Poligono poligono,Date fechaInicio, Date fechaFin, 
 			Punto punto, String horaInicio, String horaFin, String nombre,
 			String descripcion) {
-		this.idfuncion = idfuncion;
+		this.id = idfuncion;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.horaInicio = horaInicio;
@@ -67,11 +67,11 @@ public class Funcion implements java.io.Serializable {
 
 	/*@Column(name = "idfuncion", unique = true, nullable = false)*/
 	public int getIdfuncion() {
-		return this.idfuncion;
+		return this.id;
 	}
 
 	public void setIdfuncion(int idfuncion) {
-		this.idfuncion = idfuncion;
+		this.id = idfuncion;
 	}
 	
 	@Temporal(TemporalType.DATE)

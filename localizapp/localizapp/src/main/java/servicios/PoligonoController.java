@@ -49,7 +49,7 @@ public class PoligonoController {
 	@RequestParam String descripcion) throws ParseException {
 		
 		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
-		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(idUsuario));
+		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(idUsuario));
 		byte[] coord = coordenadas.getBytes();
 		Poligono poligono = new Poligono();
 		poligono.setNombre(nombre);
@@ -70,7 +70,7 @@ public class PoligonoController {
 	@RequestParam String descripcion) throws ParseException {
 		Poligono poligono = poligonoRepositoryDAO.findById(Integer.parseInt(idPoligono));
 		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
-		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(idUsuario));
+		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(idUsuario));
 		byte[] coord = coordenadas.getBytes();
 		poligono.setNombre(nombre);
 		poligono.setDescripcion(descripcion);
@@ -82,12 +82,10 @@ public class PoligonoController {
 		
 	}
 	
-
-	
 	@CrossOrigin
 	@RequestMapping("/getPoligonosByUsuario")
 	public Iterable<Poligono> getPoligonosByUsuario(@RequestParam String id) {
-		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(id));
+		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(id));
 		return poligonoRepositoryDAO.findByUsuario(usuario);
 	}
 

@@ -9,7 +9,7 @@ import entities.Usuario;
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
 	
-	public Usuario findById(int id);
+	public Usuario findByIdusuario(int id);
 	
 	public List<Usuario> findByEsAdmin(Byte esAdmin);
 	

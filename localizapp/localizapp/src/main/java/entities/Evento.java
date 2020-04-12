@@ -26,7 +26,7 @@ public class Evento implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idevento;
+	private int id;
 	
 	private String nombre;
 	
@@ -45,7 +45,7 @@ public class Evento implements java.io.Serializable {
 
 	public Evento(int idevento, String nombre, Date fechaInicio, Date fechaFin, String horaInicio, String horaFin,
 			String descripcion) {
-		this.idevento = idevento;
+		this.id = idevento;
 		this.nombre = nombre;
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
@@ -56,11 +56,11 @@ public class Evento implements java.io.Serializable {
 
 	/*@Column(name = "idevento", unique = true, nullable = false)*/
 	public int getIdevento() {
-		return this.idevento;
+		return this.id;
 	}
 
 	public void setIdevento(int idevento) {
-		this.idevento = idevento;
+		this.id = idevento;
 	}
 
 	@Column(name = "nombre", nullable = false, length = 65)

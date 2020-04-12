@@ -22,6 +22,7 @@ public class Usuario implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idusuario;
+	
 	private String nombre;
 	private String apellido;
 	private String correo;

@@ -66,7 +66,7 @@ public class UsuarioController {
 	public @ResponseBody String deleteUsuario
 	(@RequestParam String id) {
 		
-		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(id));
+		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(id));
 		usuarioRepositoryDAO.delete(usuario);
 		return "Usuario Eliminado";
 		
@@ -77,7 +77,7 @@ public class UsuarioController {
 	public @ResponseBody String deleteAdmin
 	(@RequestParam String id) {
 		
-		Usuario admin = usuarioRepositoryDAO.findById(Integer.parseInt(id));
+		Usuario admin = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(id));
 		usuarioRepositoryDAO.delete(admin);
 		return "Admin Eliminado";
 		
@@ -102,7 +102,7 @@ public class UsuarioController {
 	@CrossOrigin
 	@RequestMapping ("/getUsuarioById")
 	public Usuario getUsuarioById (@RequestParam String id) {
-		return usuarioRepositoryDAO.findById(Integer.parseInt(id));
+		return usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(id));
 		
 	}
 	

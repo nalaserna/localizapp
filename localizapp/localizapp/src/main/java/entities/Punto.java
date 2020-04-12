@@ -24,7 +24,7 @@ public class Punto implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idpunto;
+	private int id;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	private Evento evento;
@@ -40,7 +40,7 @@ public class Punto implements java.io.Serializable {
 	}
 
 	public Punto(int idpunto, Evento evento, Usuario usuario, String nombre, byte[] coordenadas) {
-		this.idpunto = idpunto;
+		this.id = idpunto;
 		this.evento = evento;
 		this.usuario = usuario;
 		this.nombre = nombre;
@@ -51,11 +51,11 @@ public class Punto implements java.io.Serializable {
 
 	/*@Column(name = "idpunto", unique = true, nullable = false)*/
 	public int getIdpunto() {
-		return this.idpunto;
+		return this.id;
 	}
 
 	public void setIdpunto(int idpunto) {
-		this.idpunto = idpunto;
+		this.id = idpunto;
 	}
 
 	/*@ManyToOne(fetch = FetchType.LAZY)

@@ -24,20 +24,25 @@ public class Poligono implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idpoligono;
+	private int id;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	private Evento evento;
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	private Usuario usuario;
+	
 	private String nombre;
 	private byte[] polygon;
 	private String descripcion;
+	
 
 	public Poligono() {
 	}
 
-	public Poligono(int idpoligono, Evento evento, String nombre, byte[] polygon, String descripcion) {
-		this.idpoligono = idpoligono;
+	public Poligono(int idpoligono, Evento evento, Usuario usuario, String nombre, byte[] polygon, String descripcion) {
+		this.id = idpoligono;
+		this.usuario = usuario;
 		this.evento = evento;
 		this.nombre = nombre;
 		this.polygon = polygon;
@@ -47,11 +52,11 @@ public class Poligono implements java.io.Serializable {
 
 	/*@Column(name = "idpoligono", unique = true, nullable = false)*/
 	public int getIdpoligono() {
-		return this.idpoligono;
+		return this.id;
 	}
 
 	public void setIdpoligono(int idpoligono) {
-		this.idpoligono = idpoligono;
+		this.id = idpoligono;
 	}
 
 	/*@ManyToOne(fetch = FetchType.LAZY)
@@ -90,6 +95,16 @@ public class Poligono implements java.io.Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	
+	@Column(name = "usuario", nullable = false, length = 200)
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

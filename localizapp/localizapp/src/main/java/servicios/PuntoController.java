@@ -46,7 +46,7 @@ public class PuntoController {
 	@RequestParam String idUsuario, @RequestParam String coordenadas) throws ParseException {
 		
 		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
-		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(idUsuario));
+		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(idUsuario));
 		byte[] coord = coordenadas.getBytes();
 		Punto punto = new Punto();
 		punto.setNombre(nombre);
@@ -67,7 +67,7 @@ public class PuntoController {
 		
 		Punto punto = puntoRepositoryDAO.findById(Integer.parseInt(puntoID));
 		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
-		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(idUsuario));
+		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(idUsuario));
 		byte[] coord = coordenadas.getBytes();
 		
 		punto.setNombre(nombre);
@@ -95,7 +95,7 @@ public class PuntoController {
 	@CrossOrigin
 	@RequestMapping ("/getPuntosByUsuario")
 	public Iterable<Punto> getPuntosByUsuario (@RequestParam String id) {
-		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(id));
+		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(id));
 		return puntoRepositoryDAO.findByUsuario(usuario);
 	}
 	
