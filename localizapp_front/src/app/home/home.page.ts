@@ -21,7 +21,7 @@ ngOnInit(){
   this.initMap();
 }
   initMap() {
-    const map = new Map('map').setView([4.730107214, -74.03782700], 20);           
+    const map = new Map('map').setView([4.730107, -74.037827], 20);           
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
