@@ -1,10 +1,15 @@
 package servicios;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import entities.Evento;
@@ -35,6 +40,48 @@ public class PoligonoController {
 		Iterable<Poligono> findAll = poligonoRepositoryDAO.findAll();
 		return findAll;
 	}
+	
+	@CrossOrigin
+	@RequestMapping(path="/newPoligono", method=RequestMethod.POST) 
+	public @ResponseBody String newPoligono
+	(@RequestParam String nombre, @RequestParam String idEvento, 
+	@RequestParam String idUsuario, @RequestParam String coordenadas, 
+	@RequestParam String descripcion) throws ParseException {
+		
+		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
+		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(idUsuario));
+		byte[] coord = coordenadas.getBytes();
+		Poligono poligono = new Poligono();
+		poligono.setNombre(nombre);
+		poligono.setDescripcion(descripcion);
+		poligono.setEvento(evento);
+		poligono.setPolygon(coord);
+		poligonoRepositoryDAO.save(poligono);
+		
+		return "Nuevo Poligono Guardado";
+		
+	}
+	
+	@CrossOrigin
+	@RequestMapping(path="/updatePoligono", method=RequestMethod.POST) 
+	public @ResponseBody String updatePoligono
+	(@RequestParam String idPoligono, @RequestParam String nombre, @RequestParam String idEvento, 
+	@RequestParam String idUsuario, @RequestParam String coordenadas, 
+	@RequestParam String descripcion) throws ParseException {
+		Poligono poligono = poligonoRepositoryDAO.findById(Integer.parseInt(idPoligono));
+		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
+		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(idUsuario));
+		byte[] coord = coordenadas.getBytes();
+		poligono.setNombre(nombre);
+		poligono.setDescripcion(descripcion);
+		poligono.setEvento(evento);
+		poligono.setPolygon(coord);
+		poligonoRepositoryDAO.save(poligono);
+		
+		return "Poligono Actualizado";
+		
+	}
+	
 
 	
 	@CrossOrigin

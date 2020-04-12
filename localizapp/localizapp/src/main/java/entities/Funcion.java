@@ -50,9 +50,11 @@ public class Funcion implements java.io.Serializable {
 	}
 
 
-	public Funcion(int idfuncion, Poligono poligono,Date fechaInicio, Date fechaFin, Punto punto, String horaInicio, String horaFin, String nombre,
+	public Funcion(int idfuncion, Poligono poligono,Date fechaInicio, Date fechaFin, 
+			Punto punto, String horaInicio, String horaFin, String nombre,
 			String descripcion) {
 		this.idfuncion = idfuncion;
+		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.horaInicio = horaInicio;
 		this.poligono = poligono;

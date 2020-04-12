@@ -1,10 +1,15 @@
 package servicios;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import entities.Evento;
@@ -32,6 +37,59 @@ public class PuntoController {
 		
 		Iterable<Punto> findAll = puntoRepositoryDAO.findAll();
 		return findAll;
+	}
+	
+	@CrossOrigin
+	@RequestMapping(path="/newPunto", method=RequestMethod.POST) 
+	public @ResponseBody String newPunto
+	(@RequestParam String nombre, @RequestParam String idEvento, 
+	@RequestParam String idUsuario, @RequestParam String coordenadas) throws ParseException {
+		
+		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
+		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(idUsuario));
+		byte[] coord = coordenadas.getBytes();
+		Punto punto = new Punto();
+		punto.setNombre(nombre);
+		punto.setEvento(evento);
+		punto.setUsuario(usuario);
+		punto.setCoordenadas(coord);
+		puntoRepositoryDAO.save(punto);
+		
+		return "Nuevo Punto Guardado";
+		
+	}
+	
+	@CrossOrigin
+	@RequestMapping(path="/updatePunto", method=RequestMethod.POST) 
+	public @ResponseBody String updatePunto
+	(@RequestParam String puntoID, @RequestParam String nombre, @RequestParam String idEvento, 
+	@RequestParam String idUsuario, @RequestParam String coordenadas) throws ParseException {
+		
+		Punto punto = puntoRepositoryDAO.findById(Integer.parseInt(puntoID));
+		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
+		Usuario usuario = usuarioRepositoryDAO.findById(Integer.parseInt(idUsuario));
+		byte[] coord = coordenadas.getBytes();
+		
+		punto.setNombre(nombre);
+		punto.setEvento(evento);
+		punto.setUsuario(usuario);
+		punto.setCoordenadas(coord);
+		puntoRepositoryDAO.save(punto);
+		
+		return "Punto Actualizado";
+		
+	}
+
+	
+	@CrossOrigin
+	@RequestMapping(path="/deletePunto", method=RequestMethod.POST) 
+	public @ResponseBody String deletePunto
+	(@RequestParam String id) {
+		
+		Punto punto = puntoRepositoryDAO.findById(Integer.parseInt(id));
+		puntoRepositoryDAO.delete(punto);
+		return "Punto Eliminado";
+		
 	}
 	
 	@CrossOrigin

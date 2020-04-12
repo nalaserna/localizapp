@@ -48,8 +48,31 @@ public class EventoController {
 		nuevoEvento.setDescripcion(descripcion);
 		nuevoEvento.setHoraInicio(horaInicio);
 		nuevoEvento.setHoraFin(horaFin);
+		eventoRepositoryDAO.save(nuevoEvento);
 		
 		return "Nuevo Evento Guardado";
+		
+	}
+	
+	@CrossOrigin
+	@RequestMapping(path="/updateEvento", method=RequestMethod.POST) 
+	public @ResponseBody String updateEvento
+	(@RequestParam String id, @RequestParam String nombre, @RequestParam String fechaInicio, 
+	@RequestParam String fechaFin, @RequestParam String horaInicio, @RequestParam String horaFin,
+	@RequestParam String descripcion) throws ParseException {
+		
+		Date fechaIn = new SimpleDateFormat("yyyy-MM-dd").parse(fechaInicio); 
+		Date fechaFi = new SimpleDateFormat("yyyy-MM-dd").parse(fechaFin);
+		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(id));
+		evento.setNombre(nombre);
+		evento.setFechaInicio(fechaIn);
+		evento.setFechaFin(fechaFi);
+		evento.setDescripcion(descripcion);
+		evento.setHoraInicio(horaInicio);
+		evento.setHoraFin(horaFin);
+		eventoRepositoryDAO.save(evento);
+		
+		return "Evento Actualizado";
 		
 	}
 	
