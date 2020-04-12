@@ -49,8 +49,15 @@ ngOnInit(){
     tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
-      marker([this.latitud, this.longitud], {icon: customMarkerIcon})
-      .bindPopup(`Muéveme y haz click para agregar un punto`, { autoClose: false }).addTo(map).openPopup();        
+      marker([this.latitud, this.longitud], {icon: customMarkerIcon, draggable:true})
+      .bindPopup(`Muéveme y haz click <br>para agregar un punto`, { autoClose: false }).addTo(map).openPopup()
+      .on('dragend',function(){
+        var coord = String(marker.getLatLng()).split(',');
+        this.latitud=coord[0].split('(');
+        console.log(this.latitud);
+        this.longitud=coord[1].split(')');
+        console.log(this.longitud);
+      })
     }
 
     
