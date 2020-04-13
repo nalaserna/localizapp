@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Evento } from '../model/Evento';
 
+misEventos: Array<Evento>;
 
 @Component({
   selector: 'app-eventos',
