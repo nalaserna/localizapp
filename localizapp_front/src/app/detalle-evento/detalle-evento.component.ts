@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Evento } from '../model/Evento';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-detalle-evento',
@@ -7,8 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalleEventoComponent implements OnInit {
 
-  constructor() { }
+  @Input() MySelectedEvento: Evento;
 
-  ngOnInit() {}
+
+  constructor(private router:Router) {
+    
+   }
+
+  
+
+
+  ngOnInit() {
+    console.log(this.MySelectedEvento);
+  }
 
 }

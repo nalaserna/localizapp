@@ -1,3 +1,24 @@
-<p>
-  detalle-evento works!
-</p>
+
+  <ion-list>
+  <ion-item-sliding>
+    <ion-item>
+     
+        <ion-button fill="solid" color="primary" fontsize="6px" slot="end">Elegir</ion-button>
+  
+      <ion-label>
+        <h2>{{ MySelectedEvento.nombre }}</h2>
+        <br>
+        <p>{{ MySelectedEvento.descripcion }}</p>
+        <h3>Fecha Inicio: {{MySelectedEvento.fechaInicio}}</h3>
+        <h3>Fecha Fin: {{MySelectedEvento.fechaFin}}</h3>
+        <h3>Hora Inicio: {{ MySelectedEvento.horaInicio}}</h3>
+        <h3>Hora Fin: {{ MySelectedEvento.horaFin}}</h3>
+      </ion-label>
+      
+    </ion-item>
+</ion-item-sliding>
+</ion-list>
+
+
+
+
