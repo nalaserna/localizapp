@@ -13,9 +13,10 @@ import { EventosComponent } from './eventos/eventos.component';
 import { DetalleEventoComponent } from './detalle-evento/detalle-evento.component';
 import { HttpClientModule } from '@angular/common/http';
 import { VereventoComponent } from './verevento/verevento.component';
+import { EventopuntosComponent } from './eventopuntos/eventopuntos.component';
 
 @NgModule({
-  declarations: [AppComponent, EventosComponent, DetalleEventoComponent, VereventoComponent],
+  declarations: [AppComponent, EventosComponent, DetalleEventoComponent, VereventoComponent, EventopuntosComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
