@@ -24,4 +24,8 @@ export class DetalleEventoComponent implements OnInit {
     console.log(this.MySelectedEvento);
   }
 
+  elegirEvento(evento: number){
+    console.log(evento);
+  }
+
 }
