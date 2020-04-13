@@ -1,0 +1,37 @@
+<ion-app>
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title size="small">Ver Evento</ion-title>
+      <ion-buttons slot="primary">
+        <ion-button size="small" fill="clear" color="secondary" (click)="volver()">
+         Volver
+          <ion-icon slot="start" name="arrow-back-circle-outline"></ion-icon>
+        </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item-sliding>
+        <ion-item>
+           
+          <ion-label>
+            <h2>{{ myEvento.nombre }}</h2>
+            <br>
+            <p>{{ myEvento.descripcion }}</p>
+            <br>
+            <h3>Fecha Inicio: {{myEvento.fechaInicio}}</h3>
+            <h3>Fecha Fin: {{myEvento.fechaFin}}</h3>
+            <h3>Hora Inicio: {{ myEvento.horaInicio}}</h3>
+            <h3>Hora Fin: {{ myEvento.horaFin}}</h3>
+            <ion-button fill="solid" color="danger" fontsize="6px" slot="end">Eliminar</ion-button>
+          </ion-label>
+        </ion-item>
+    </ion-item-sliding>
+    </ion-list>
+  </ion-content>
+  </ion-app>
+  
+ 
+  
+  

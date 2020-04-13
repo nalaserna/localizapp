@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   urlConsultarEventos: 'http://localhost:8084/getAllEventos',
+  urlVerEvento: 'http://localhost:8084/getEventoById'
 };
 
 /*

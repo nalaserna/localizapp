@@ -12,9 +12,10 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { EventosComponent } from './eventos/eventos.component';
 import { DetalleEventoComponent } from './detalle-evento/detalle-evento.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VereventoComponent } from './verevento/verevento.component';
 
 @NgModule({
-  declarations: [AppComponent, EventosComponent, DetalleEventoComponent],
+  declarations: [AppComponent, EventosComponent, DetalleEventoComponent, VereventoComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [

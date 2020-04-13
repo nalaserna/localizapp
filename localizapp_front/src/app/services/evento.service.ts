@@ -14,4 +14,12 @@ export class EventoService {
   public getAllEventos(): Observable<Evento[]> {
     return this.http.get<Evento[]>(environment.urlConsultarEventos);
   }
+
+  public getEventoById(idevento: string): Observable<Evento> {
+    const parametros = new HttpParams()
+      .set('id', idevento);
+    let httpParams = parametros;
+
+    return this.http.post<Evento>(environment.urlVerEvento, httpParams);
+  }
 }
