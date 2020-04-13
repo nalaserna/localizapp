@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Evento } from '../model/Evento';
 
-misEventos: Array<Evento>;
 
 @Component({
   selector: 'app-eventos',
@@ -10,6 +9,8 @@ misEventos: Array<Evento>;
   styleUrls: ['./eventos.component.scss'],
 })
 export class EventosComponent implements OnInit {
+  
+  misEventos: Array<Evento>;
 
   constructor(public router: Router) { }
 
