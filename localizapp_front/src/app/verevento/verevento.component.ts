@@ -9,7 +9,7 @@ import { EventoService } from '../services/evento.service';
   styleUrls: ['./verevento.component.scss'],
 })
 export class VereventoComponent implements OnInit {
-  myEvento: Evento;
+  @Input() myEvento: Evento;
   idevento : string;
   constructor(private router:Router, private eventoService: EventoService,private route: ActivatedRoute) {
     this.idevento = this.route.snapshot.paramMap.get('id');
