@@ -99,7 +99,7 @@ public selectEvent(event) {
   console.log(this.selectedEventId);
 
   this.puntoService.getPuntosByEventoNombre(this.selectedEventId).subscribe(resp =>{
-    console.log(resp[0]);
+    console.log(resp);
     let i = 0;
     for(let m in resp) {
       let coord = resp[i].coordenadas.split(',');
