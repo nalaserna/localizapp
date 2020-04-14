@@ -49,6 +49,7 @@ ngOnInit(){
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(this.map);
+  this.map.invalidateSize();
 
   // Add function to continuously update location (every 10 seconds)
   let geoSub = interval(10000).subscribe(() => {
@@ -116,6 +117,7 @@ public selectEvent(event) {
       this.markers[i].bindPopup(`<b>${this.misPuntos[i].nombre}</b>`, { autoClose: false })
       .addTo(this.map).openPopup();
     }
+    this.map.invalidateSize();
    });
 }
 
