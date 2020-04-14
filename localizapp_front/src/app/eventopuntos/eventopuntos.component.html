@@ -1,3 +1,29 @@
-<p>
-  eventopuntos works!
-</p>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+ integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+ crossorigin=""></script>
+<ion-app>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+      <ion-title size="small">{{ miEvento.nombre }}</ion-title>
+      <ion-buttons slot="primary">
+        <ion-button size="small" fill="clear" color="secondary" (click)="volver()">
+         Volver
+          <ion-icon slot="start" name="arrow-back-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" color="secondary" (click)="verMisEventos()">
+          Cambiar Evento
+          <ion-icon slot="end" name="browsers-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <ion-content>
+    <div id="map" style="height:100%; height: 100%"></div>
+  </ion-content>  
+</ion-content>
+</ion-app>

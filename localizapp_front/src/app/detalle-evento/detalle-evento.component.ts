@@ -25,7 +25,8 @@ export class DetalleEventoComponent implements OnInit {
   }
 
   elegirEvento(evento: number){
-    
+    this.router.navigate(['/puntosevento', evento]);
+    console.log(evento);
   }
 
 }
