@@ -37,6 +37,7 @@ export class HomePage {
     private puntoService: PuntoService,
     private eventoService: EventoService) {
     
+      this.markers=[];
       this.miEvento = "prueba";
               }
 
@@ -52,8 +53,9 @@ ngOnInit(){
   // Add function to continuously update location (every 10 seconds)
   let geoSub = interval(10000).subscribe(() => {
     this.getCurrentLocation();
-  });
-    
+  })
+  
+  
   this.eventoService.getAllEventos().subscribe((res) => {
     this.eventList = res;
     console.log(this.eventList);
@@ -68,7 +70,9 @@ private getCurrentLocation() {
   this.geolocation.getCurrentPosition().then((resp) => {
     this.latitud = resp.coords.latitude;
     this.longitud = resp.coords.longitude;
-    this.map.setView([this.latitud, this.longitud], 19);    
+    if(!this.misPuntos) {
+      this.map.setView([this.latitud, this.longitud], 19);   
+    }
     if(!this.myLocationMarker) {
       this.myLocationMarker = new CircleMarker([this.latitud, this.longitud]).addTo(this.map);
     }
@@ -99,15 +103,13 @@ public selectEvent(event) {
   console.log(this.selectedEventId);
 
   this.puntoService.getPuntosByEventoNombre(this.selectedEventId).subscribe(resp =>{
-    console.log(resp);
-    let i = 0;
-    for(let m in resp) {
-      let coord = resp[i].coordenadas.split(',');
+    this.misPuntos=resp;
+    for(let i = 0; i < this.misPuntos.length; i++) {
+      let coord = this.misPuntos[i].coordenadas.split(',');
       let lat: number = parseFloat(coord[0]);
       let long: number = parseFloat(coord[1]);
       this.markers.push(new Marker([lat, long], {icon: customMarkerIcon2}))
-      this.markers[i].bindPopup(`<b>${m.nombre}</b>`, { autoClose: false })
-
+      this.markers[i].bindPopup(`<b>${this.misPuntos[i].nombre}</b>`, { autoClose: false })
       .addTo(this.map).openPopup();
     }
    });
