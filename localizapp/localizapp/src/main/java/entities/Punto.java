@@ -33,13 +33,13 @@ public class Punto implements java.io.Serializable {
 	private Usuario usuario;
 	
 	private String nombre;
-	private byte[] coordenadas;
+	private String coordenadas;
 
 
 	public Punto() {
 	}
 
-	public Punto(int idpunto, Evento evento, Usuario usuario, String nombre, byte[] coordenadas) {
+	public Punto(int idpunto, Evento evento, Usuario usuario, String nombre, String coordenadas) {
 		this.id = idpunto;
 		this.evento = evento;
 		this.usuario = usuario;
@@ -90,11 +90,11 @@ public class Punto implements java.io.Serializable {
 	}
 
 	@Column(name = "coordenadas", nullable = false)
-	public byte[] getCoordenadas() {
+	public String getCoordenadas() {
 		return this.coordenadas;
 	}
 
-	public void setCoordenadas(byte[] coordenadas) {
+	public void setCoordenadas(String coordenadas) {
 		this.coordenadas = coordenadas;
 	}
 

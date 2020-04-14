@@ -47,12 +47,11 @@ public class PuntoController {
 		
 		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
 		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(idUsuario));
-		byte[] coord = coordenadas.getBytes();
 		Punto punto = new Punto();
 		punto.setNombre(nombre);
 		punto.setEvento(evento);
 		punto.setUsuario(usuario);
-		punto.setCoordenadas(coord);
+		punto.setCoordenadas(coordenadas);
 		puntoRepositoryDAO.save(punto);
 		
 		return "Nuevo Punto Guardado";
@@ -68,12 +67,11 @@ public class PuntoController {
 		Punto punto = puntoRepositoryDAO.findById(Integer.parseInt(puntoID));
 		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
 		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(idUsuario));
-		byte[] coord = coordenadas.getBytes();
 		
 		punto.setNombre(nombre);
 		punto.setEvento(evento);
 		punto.setUsuario(usuario);
-		punto.setCoordenadas(coord);
+		punto.setCoordenadas(coordenadas);
 		puntoRepositoryDAO.save(punto);
 		
 		return "Punto Actualizado";
