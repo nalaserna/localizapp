@@ -108,6 +108,9 @@ public class PuntoController {
 	@RequestMapping ("/getPuntosByEventoNombre")
 	public Iterable<Punto> getPuntosByEventoNombre (@RequestParam String nombre) {
 		Evento evento = eventoRepositoryDAO.findByNombre(nombre);
+		System.out.println(evento.getNombre());
+		Iterable<Punto> puntos = puntoRepositoryDAO.findByEvento(evento);
+		System.out.println(puntos);
 		return puntoRepositoryDAO.findByEvento(evento);
 	}
 	
