@@ -78,6 +78,12 @@ export class EventopuntosComponent implements OnInit {
       popupAnchor: [0, -20]
     });
 
+    const customMarkerIcon2 = icon({
+      iconUrl: 'assets/images/existente.png',
+      iconSize: [50, 60], 
+      popupAnchor: [0, -20]
+    });
+
     if(puntos[0]!=null){
     var coord = puntos[0].coordenadas.split(',');
     const map2 = new Map('map').setView([coord[0],coord[1]], 20);           
@@ -88,7 +94,7 @@ export class EventopuntosComponent implements OnInit {
         var coordenadas = punto.coordenadas.split(',');
         console.log(coordenadas[0]);
         console.log(coordenadas[1]);
-        marker([coordenadas[0], coordenadas[1]], {icon: customMarkerIcon})
+        marker([coordenadas[0], coordenadas[1]], {icon: customMarkerIcon2})
         .bindPopup(`<b>${punto.nombre}</b>`, { autoClose: false })
        /* .on('click', () => this.router.navigateByUrl('/restaurant'))*/
         .addTo(map2).openPopup();
