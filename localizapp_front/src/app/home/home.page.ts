@@ -101,9 +101,13 @@ public selectEvent(event) {
   });
 
   console.log(this.selectedEventId);
-
+  for(let j = 0; j < this.markers.length; j++) {
+    this.map.removeLayer(this.markers[j]);
+  }
   this.puntoService.getPuntosByEventoNombre(this.selectedEventId).subscribe(resp =>{
     this.misPuntos=resp;
+    this.markers = [];  
+    console.log(this.misPuntos);
     for(let i = 0; i < this.misPuntos.length; i++) {
       let coord = this.misPuntos[i].coordenadas.split(',');
       let lat: number = parseFloat(coord[0]);
