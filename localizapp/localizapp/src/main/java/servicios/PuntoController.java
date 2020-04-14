@@ -105,6 +105,13 @@ public class PuntoController {
 	}
 	
 	@CrossOrigin
+	@RequestMapping ("/getPuntosByEventoNombre")
+	public Iterable<Punto> getPuntosByEventoNombre (@RequestParam String nombre) {
+		Evento evento = eventoRepositoryDAO.findByNombre(nombre);
+		return puntoRepositoryDAO.findByEvento(evento);
+	}
+	
+	@CrossOrigin
 	@RequestMapping ("/getPuntoByNombre")
 	public Iterable<Punto> getPuntoByNombre (@RequestParam String nombre) {
 		return puntoRepositoryDAO.findByNombre(nombre);

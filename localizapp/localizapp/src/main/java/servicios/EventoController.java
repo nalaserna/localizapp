@@ -121,7 +121,7 @@ public class EventoController {
 	
 	@CrossOrigin
 	@RequestMapping ("/getEventoByNombre")
-	public Iterable<Evento> getEventoByNombre(@RequestParam String nombre) {
+	public Evento getEventoByNombre(@RequestParam String nombre) {
 		return eventoRepositoryDAO.findByNombre(nombre);
 	}
 	
