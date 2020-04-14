@@ -20,4 +20,11 @@ export class PuntoService {
     return this.http.post<Punto[]>(environment.urlPuntosEvento, httpParams);
   }
 
+  public getPuntosByEventoNombre(nombre:string): Observable<Punto[]>{
+    const parametros = new HttpParams()
+    .set('nombre', nombre);
+    let httpParams = parametros;
+    return this.http.post<Punto[]>(environment.urlPuntoByNombreEvento, httpParams);
+  }
+
 }

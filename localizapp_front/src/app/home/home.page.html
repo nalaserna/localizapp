@@ -9,18 +9,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title size="small">Mapa</ion-title>
-    <ion-buttons slot="primary">
-      <ion-button fill="clear" color="secondary" (click)="verMisEventos()">
+    <ion-item slot="primary">
+      <ion-label fill="clear" color="secondary">
         Elige un evento
-        <ion-icon slot="end" name="browsers-outline"></ion-icon>
-      </ion-button>
-      </ion-buttons>
+      </ion-label>
+      <ion-select [(ngModel)]="selectedEventId" (ionChange)="selectEvent($event)">
+        <ion-select-option *ngFor="let event of eventList" [value]="event.id">{{event.nombre}}</ion-select-option>
+      </ion-select>
+      </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-content>
-    <div id="map" style="height:100%; height: 100%"></div>
+    <div id="map" style="height:100%; height: 100%" leaflet (leafletMapReady)="onMapReady($event)"></div>
   </ion-content>  
 
 

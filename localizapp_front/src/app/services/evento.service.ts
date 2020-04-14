@@ -22,4 +22,6 @@ export class EventoService {
 
     return this.http.post<Evento>(environment.urlVerEvento, httpParams);
   }
+
+ 
 }

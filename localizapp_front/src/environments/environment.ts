@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   urlConsultarEventos: 'http://localhost:8084/getAllEventos',
   urlVerEvento: 'http://localhost:8084/getEventoById',
-  urlPuntosEvento: 'http://localhost:8084/getPuntosByEvento'
+  urlPuntosEvento: 'http://localhost:8084/getPuntosByEvento',
+  urlPuntoByNombreEvento:'http://localhost:8084/getPuntosByEventoNombre'
 };
 
 /*
