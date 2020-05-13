@@ -15,6 +15,7 @@
       </ion-label>
       <ion-select [(ngModel)]="selectedEventId" (ionChange)="selectEvent($event)">
         <ion-select-option *ngFor="let event of eventList" [value]="event.id">{{event.nombre}}</ion-select-option>
+        <ion-select-option [value]="-1">Nuevo Evento</ion-select-option>
       </ion-select>
       </ion-item>
   </ion-toolbar>

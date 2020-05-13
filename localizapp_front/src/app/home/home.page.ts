@@ -101,6 +101,10 @@ public selectEvent(event) {
     popupAnchor: [0, -20]
   });
 
+  if(this.selectedEventId == -1){
+    this.nuevoEvento();
+  }
+
   console.log(this.selectedEventId);
   for(let j = 0; j < this.markers.length; j++) {
     this.map.removeLayer(this.markers[j]);
@@ -209,6 +213,10 @@ private eventSubscribe() {
       this.router.navigate(['/misEventos']);
     }
 
+    public nuevoEvento(){
+      console.log("Creando evento " +this.selectedEventId);
+      this.router.navigate(['/nuevoEvento']);
+    }
     
 }
 
