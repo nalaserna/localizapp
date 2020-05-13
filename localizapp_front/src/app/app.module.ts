@@ -15,10 +15,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { VereventoComponent } from './verevento/verevento.component';
 import { EventopuntosComponent } from './eventopuntos/eventopuntos.component';
 import { NuevoEventoComponent } from './nuevo-evento/nuevo-evento.component';
+import { EventModalPage } from './event-modal/event-modal.page';
 
 @NgModule({
-  declarations: [AppComponent, EventosComponent, DetalleEventoComponent, VereventoComponent, EventopuntosComponent, NuevoEventoComponent],
-  entryComponents: [],
+  declarations: [
+    AppComponent,
+    EventosComponent,
+    DetalleEventoComponent,
+    VereventoComponent,
+    EventopuntosComponent,
+    NuevoEventoComponent,
+    EventModalPage],
+  entryComponents: [EventModalPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [
     StatusBar,
