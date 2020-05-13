@@ -103,7 +103,7 @@ public selectEvent(event) {
 
   if(this.selectedEventId == -1){
     this.nuevoEvento();
-  }
+  }else{
 
   console.log(this.selectedEventId);
   for(let j = 0; j < this.markers.length; j++) {
@@ -123,6 +123,7 @@ public selectEvent(event) {
     }
     this.map.invalidateSize();
    });
+  }
 }
 
 onMapReady(map: Map) {
