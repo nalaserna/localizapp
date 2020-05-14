@@ -5,7 +5,7 @@
   </ion-header>
   <ion-item *ngFor="let evento of eventList">
     <ion-label>{{evento.nombre}}</ion-label>
-    <ion-radio [value]="evento.idevento"></ion-radio>
+    <ion-radio [value]="evento.nombre"></ion-radio>
   </ion-item>
 </ion-radio-group>
 </ion-list>

@@ -28,9 +28,9 @@ export class HomePage {
   private map: Map;
   private myLocationMarker: CircleMarker;
   public eventList;
-  public selectedEventId;
+  @Input() public selectedEventId;
   private markers: Array<Marker>;
-  @Input() data: any;
+ 
   
   constructor(
     private geolocation: Geolocation,
@@ -91,7 +91,7 @@ private getCurrentLocation() {
   });
 }
 
-public selectEvent(event) {
+public selectEvent() {
 
   const customMarkerIcon = icon({
     iconUrl: 'assets/images/nati.png',
@@ -136,8 +136,11 @@ onMapReady(map: Map) {
       component: EventModalPage,
     });
     modal.onDidDismiss().then(data =>{
-      this.data = data.data;
-      console.log("Recibido " +this.data);
+      this.selectedEventId = data.data;
+      console.log("Recibido " +this.selectedEventId);
+      if(this.selectedEventId != null){
+        this.selectEvent();
+      }
     });
 
     return await modal.present();
