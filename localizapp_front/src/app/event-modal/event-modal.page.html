@@ -1,14 +1,22 @@
 <ion-list>
 <ion-radio-group [(ngModel)]="selectedEventId">
-  <ion-header>
-     <ion-list-header>Eventos</ion-list-header>
-  </ion-header>
+  <ion-list-header>
+     <ion-toolbar>
+       <ion-title>Eventos
+       </ion-title>
+       <ion-button shape="round" color="success" fill="clear" (click)="presentModal()" size="medium">
+         <ion-icon name="add-circle"></ion-icon>
+        </ion-button>
+      </ion-toolbar>
+  </ion-list-header>
   <ion-item *ngFor="let evento of eventList">
     <ion-label>{{evento.nombre}}</ion-label>
     <ion-radio [value]="evento.nombre"></ion-radio>
   </ion-item>
 </ion-radio-group>
 </ion-list>
+
 <ion-footer>
   <ion-button (click)="dismiss()">Aceptar</ion-button>
+  
 </ion-footer>
