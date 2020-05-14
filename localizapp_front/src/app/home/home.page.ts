@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Platform, ModalController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Map, tileLayer, marker, icon, CircleMarker, Marker } from 'leaflet';
@@ -30,7 +30,7 @@ export class HomePage {
   public eventList;
   public selectedEventId;
   private markers: Array<Marker>;
-  
+  @Input() data: any;
   
   constructor(
     private geolocation: Geolocation,
@@ -135,8 +135,16 @@ onMapReady(map: Map) {
     const modal = await this.modalController.create({
       component: EventModalPage,
     });
+    modal.onDidDismiss().then(data =>{
+      this.data = data.data;
+      console.log("Recibido " +this.data);
+    });
+
     return await modal.present();
+
   }
+
+  
 
 /*
 private eventSubscribe() {
