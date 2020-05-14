@@ -1,5 +1,5 @@
 <ion-list>
-<ion-radio-group>
+<ion-radio-group [(ngModel)]="selectedEventId">
   <ion-header>
      <ion-list-header>Eventos</ion-list-header>
   </ion-header>
@@ -9,3 +9,6 @@
   </ion-item>
 </ion-radio-group>
 </ion-list>
+<ion-footer>
+  <ion-button (click)="seleccionado()">Aceptar</ion-button>
+</ion-footer>
