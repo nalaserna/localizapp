@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-nuevo-evento',
@@ -7,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NuevoEventoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public modalController: ModalController) { }
 
   ngOnInit() {}
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: NuevoEventoComponent
+    });
+    return await modal.present();
+  }
 
 }

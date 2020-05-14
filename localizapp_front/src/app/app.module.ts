@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy, ModalController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -15,16 +14,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { VereventoComponent } from './verevento/verevento.component';
 import { EventopuntosComponent } from './eventopuntos/eventopuntos.component';
 import { NuevoEventoComponent } from './nuevo-evento/nuevo-evento.component';
+import { HomePageModule } from './home/home.module';
 
 @NgModule({
   declarations: [AppComponent, EventosComponent, DetalleEventoComponent, VereventoComponent, EventopuntosComponent, NuevoEventoComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, HomePageModule],
   providers: [
     StatusBar,
     SplashScreen,
     Geolocation,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ModalController
   ],
   bootstrap: [AppComponent]
 })

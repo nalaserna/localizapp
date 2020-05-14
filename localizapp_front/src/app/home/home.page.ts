@@ -10,12 +10,16 @@ import { PuntoService } from '../services/punto.service';
 import { EventoService } from '../services/evento.service';
 import { Evento } from '../model/Evento';
 import { interval, Observable, Subscription } from 'rxjs';
+import { ModalController } from '@ionic/angular';
+import { EventoModalComponent } from './evento-modal/evento-modal.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+
 export class HomePage {
   latitud : number;
   longitud : number;
@@ -35,7 +39,8 @@ export class HomePage {
     public router: Router,
     private route: ActivatedRoute, 
     private puntoService: PuntoService,
-    private eventoService: EventoService) {
+    private eventoService: EventoService,
+    public modalController: ModalController) {
     
       this.markers=[];
       this.miEvento = "prueba";
@@ -55,7 +60,7 @@ ngOnInit(){
   let geoSub = interval(10000).subscribe(() => {
     this.getCurrentLocation();
   })
-  
+    
   
   this.eventoService.getAllEventos().subscribe((res) => {
     this.eventList = res;
@@ -101,10 +106,6 @@ public selectEvent(event) {
     popupAnchor: [0, -20]
   });
 
-  if(this.selectedEventId == -1){
-    this.nuevoEvento();
-  }else{
-
   console.log(this.selectedEventId);
   for(let j = 0; j < this.markers.length; j++) {
     this.map.removeLayer(this.markers[j]);
@@ -123,7 +124,6 @@ public selectEvent(event) {
     }
     this.map.invalidateSize();
    });
-  }
 }
 
 onMapReady(map: Map) {
@@ -131,6 +131,16 @@ onMapReady(map: Map) {
     map.invalidateSize();
   }, 0);
 }
+
+
+  public async createModal() {
+      const modal = await this.modalController.create({
+        component: EventoModalComponent
+      });
+      return await modal.present();
+  }
+
+
 /*
 private eventSubscribe() {
 
@@ -214,10 +224,7 @@ private eventSubscribe() {
       this.router.navigate(['/misEventos']);
     }
 
-    public nuevoEvento(){
-      console.log("Creando evento " +this.selectedEventId);
-      this.router.navigate(['/nuevoEvento']);
-    }
+
     
 }
 

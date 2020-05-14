@@ -4,8 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
 import { HomePage } from './home.page';
+import { EventoModalComponent } from './evento-modal/evento-modal.component';
 
 @NgModule({
   imports: [
@@ -18,8 +18,10 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage
       }
-    ])
+    ]),
   ],
-  declarations: [HomePage]
+  declarations: [HomePage/*, EventoModalComponent*/],
+  entryComponents: [HomePage/*, EventoModalComponent*/],
+  exports: [HomePage/*, EventoModalComponent*/]
 })
 export class HomePageModule {}

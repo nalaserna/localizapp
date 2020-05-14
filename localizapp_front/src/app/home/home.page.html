@@ -10,13 +10,14 @@
   <ion-toolbar>
     <ion-title size="small">Mapa</ion-title>
     <ion-item slot="primary">
-      <ion-label fill="clear" color="secondary">
+      <ion-button expand="block" (click)="createModal()">Elegir Evento</ion-button>
+   <!--   <ion-label fill="clear" color="secondary">
         Elige un evento
       </ion-label>
       <ion-select [(ngModel)]="selectedEventId" (ionChange)="selectEvent($event)">
         <ion-select-option *ngFor="let event of eventList" [value]="event.id">{{event.nombre}}</ion-select-option>
         <ion-select-option [value]="-1">Nuevo Evento</ion-select-option>
-      </ion-select>
+      </ion-select>-->
       </ion-item>
   </ion-toolbar>
 </ion-header>
