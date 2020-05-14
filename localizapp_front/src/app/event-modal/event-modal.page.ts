@@ -35,16 +35,22 @@ export class EventModalPage implements OnInit {
       const modal = await this.modalCtrl.create({
         component: NeweventmodalPage,
       });
-   /*   modal.onDidDismiss().then(data =>{
+        modal.onDidDismiss().then( data=>{
+          this.eventoService.getAllEventos().subscribe((res) => {
+            this.eventList = res;
+            console.log(this.eventList);
+          });
+        }
+          );
+          
+          /*data =>{
         this.selectedEventId = data.data;
         console.log("Recibido " +this.selectedEventId);
         if(this.selectedEventId != null){
           this.selectEvent();
         }
       });*/
-  
       return await modal.present();
-  
     }
 
 
