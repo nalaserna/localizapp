@@ -18,20 +18,12 @@ export class EventModalPage implements OnInit {
     this.eventoService.getAllEventos().subscribe((res) => {
       this.eventList = res;
       console.log(this.eventList);
+      
     });
   }
 
   public seleccionado(){
     console.log("EVENTO: " +this.selectedEventId);
-  }
-
-  public cambio(event){
-    this.selectedEventId=event.target.value;
-    console.log("cambio " ,this.selectedEventId);
-  }
-
-  public nope(event){
-    console.log("No: ", event.target.value);
   }
 
 
