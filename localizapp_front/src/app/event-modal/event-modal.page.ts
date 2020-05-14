@@ -21,4 +21,18 @@ export class EventModalPage implements OnInit {
     });
   }
 
+  public seleccionado(event){
+    console.log("EVENTO: ", event.target.value);
+  }
+
+  public cambio(event){
+    this.selectedEventId=event.target.value;
+    console.log("cambio " ,this.selectedEventId);
+  }
+
+  public nope(event){
+    console.log("No: ", event.target.value);
+  }
+
+
 }

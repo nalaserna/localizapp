@@ -4,7 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy, ModalController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
@@ -16,6 +16,7 @@ import { EventopuntosComponent } from './eventopuntos/eventopuntos.component';
 import { NuevoEventoComponent } from './nuevo-evento/nuevo-evento.component';
 import { EventModalPage } from './event-modal/event-modal.page';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,7 @@ import { EventModalPage } from './event-modal/event-modal.page';
     NuevoEventoComponent,
     EventModalPage],
   entryComponents: [EventModalPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     StatusBar,
     SplashScreen,

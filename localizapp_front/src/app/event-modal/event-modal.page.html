@@ -1,11 +1,18 @@
-<ion-list radio-group>
+<ion-list radio-group (ionSelect)="seleccionado($event)" (ionChange)="cambio($event)" (ionBlur)="nope($event)">
   <ion-header>
      <ion-list-header>Eventos</ion-list-header>
   </ion-header>
 
-  <ion-item *ngFor="let event of eventList">
-    <ion-label>{{event.nombre}}</ion-label>
-    <ion-radio value="event.id" checked></ion-radio>
+  <ion-item *ngFor="let evento of eventList">
+    <div *ngIf="evento.id == 1; then thenBlock else elseBlock"></div>
+    <ng-template #thenBlock>
+      <ion-label>{{evento.nombre}}</ion-label>
+    <ion-radio [value]="evento.id" checked></ion-radio>
+    </ng-template>
+    <ng-template #elseBlock>
+      <ion-label>{{evento.nombre}}</ion-label>
+    <ion-radio [value]="evento.id"></ion-radio>
+    </ng-template>
   </ion-item>
 
 </ion-list>
