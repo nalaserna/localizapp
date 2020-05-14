@@ -12,6 +12,10 @@ const routes: Routes = [
   { path: 'puntosevento/:id',component: EventopuntosComponent},
   { path: 'nuevoEvento', component: NuevoEventoComponent},
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  {
+    path: 'event-modal',
+    loadChildren: () => import('./event-modal/event-modal.module').then( m => m.EventModalPageModule)
+  },
 ];
 
 @NgModule({

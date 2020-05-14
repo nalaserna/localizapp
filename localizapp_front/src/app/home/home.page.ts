@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Platform, ModalController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Map, tileLayer, marker, icon, CircleMarker, Marker } from 'leaflet';
 import { Http } from '@angular/http';
@@ -10,8 +10,7 @@ import { PuntoService } from '../services/punto.service';
 import { EventoService } from '../services/evento.service';
 import { Evento } from '../model/Evento';
 import { interval, Observable, Subscription } from 'rxjs';
-import { ModalController } from '@ionic/angular';
-import { EventoModalComponent } from './evento-modal/evento-modal.component';
+import { EventModalPage } from '../event-modal/event-modal.page';
 
 @Component({
   selector: 'app-home',
@@ -132,14 +131,12 @@ onMapReady(map: Map) {
   }, 0);
 }
 
-
-  public async createModal() {
-      const modal = await this.modalController.create({
-        component: EventoModalComponent
-      });
-      return await modal.present();
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: EventModalPage,
+    });
+    return await modal.present();
   }
-
 
 /*
 private eventSubscribe() {

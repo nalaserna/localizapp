@@ -10,8 +10,8 @@
   <ion-toolbar>
     <ion-title size="small">Mapa</ion-title>
     <ion-item slot="primary">
-      <ion-button expand="block" (click)="createModal()">Elegir Evento</ion-button>
-   <!--   <ion-label fill="clear" color="secondary">
+      <ion-button (click)="presentModal()">Eventos</ion-button>
+      <!--<ion-label fill="clear" color="secondary">
         Elige un evento
       </ion-label>
       <ion-select [(ngModel)]="selectedEventId" (ionChange)="selectEvent($event)">
