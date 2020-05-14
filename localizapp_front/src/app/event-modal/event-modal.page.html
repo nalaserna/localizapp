@@ -1,3 +1,11 @@
-<ion-header>
-  Hello World
-</ion-header>
+<ion-list radio-group>
+  <ion-header>
+     <ion-list-header>Eventos</ion-list-header>
+  </ion-header>
+
+  <ion-item *ngFor="let event of eventList">
+    <ion-label>{{event.nombre}}</ion-label>
+    <ion-radio value="event.id" checked></ion-radio>
+  </ion-item>
+
+</ion-list>

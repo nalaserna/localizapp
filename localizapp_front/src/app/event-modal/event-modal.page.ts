@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventoService } from '../services/evento.service';
+import { Evento } from '../model/Evento';
 
 @Component({
   selector: 'app-event-modal',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventModalPage implements OnInit {
 
-  constructor() { }
+  public selectedEventId;
+  public eventList;
+
+  constructor(private eventoService: EventoService) { }
 
   ngOnInit() {
+    this.eventoService.getAllEventos().subscribe((res) => {
+      this.eventList = res;
+      console.log(this.eventList);
+    });
   }
 
 }
