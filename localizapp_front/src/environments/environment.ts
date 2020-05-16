@@ -9,7 +9,8 @@ export const environment = {
   urlPuntosEvento: 'http://localhost:8084/getPuntosByEvento',
   urlPuntoByNombreEvento:'http://localhost:8084/getPuntosByEventoNombre',
   urlCreateEvento: 'http://localhost:8084/newEvento',
-  urlDeleteEvento: 'http://localhost:8084/deleteEvento'
+  urlDeleteEvento: 'http://localhost:8084/deleteEvento',
+  urlUpdateEvento: 'http://localhost:8084/updateEvento'
 };
 
 /*

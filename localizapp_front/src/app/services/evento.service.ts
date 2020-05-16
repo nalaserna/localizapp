@@ -46,5 +46,21 @@ export class EventoService {
         return this.http.post<String>(environment.urlDeleteEvento, httpParams);
      }
 
+     public editarEvento(eventoid: string, nombre:string, descripcion:string, fechaInicio: string, fechaFin: string, horaInicio:string,
+      horaFin: string):Observable<String>{
+        const parametros = new HttpParams()
+        .set('id', eventoid)
+        .set('nombre', nombre)
+        .set('fechaInicio', fechaInicio)
+        .set('fechaFin', fechaFin)
+        .set('horaInicio', horaInicio)
+        .set('horaFin', horaFin)
+        .set('descripcion', descripcion);
+        let httpParams = parametros;
+        
+        return this.http.post<String>(environment.urlUpdateEvento, httpParams);
+
+      }
+
  
 }

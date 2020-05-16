@@ -1,9 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>editarEvento</ion-title>
+    <ion-title>{{ selectedEvento.nombre }} <ion-icon name="pencil-outline"></ion-icon></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-input placeholder="{{ selectedEvento.nombre }}" type="text" [(ngModel)]="nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="{{ selectedEvento.descripcion }}" type="text" [(ngModel)]="descripcion"></ion-input>
+  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha Inicio</ion-label>
+      <ion-datetime placeholder="{{ selectedEvento.fechaInicio | date : 'dd/MM/yyyy' }}" displayFormat="DD/MM/YYYY" type="text" min="2020-03-14" max="2022-12-31" [(ngModel)]="fechaInicio"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Fecha Fin</ion-label>
+      <ion-datetime placeholder="{{ selectedEvento.fechaFin | date : 'dd/MM/yyyy' }}" displayFormat="DD/MM/YYYY"  type="text" min="2020-03-14" max="2022-12-31"  [(ngModel)]="fechaFin"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora Inicio</ion-label>
+      <ion-datetime placeholder="{{ selectedEvento.horaInicio }}" type="text" displayFormat="h:mm a"  [(ngModel)]="horaInicio"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora Fin</ion-label>
+      <ion-datetime placeholder="{{ selectedEvento.horaFin }}" type="text" displayFormat="h:mm a" [(ngModel)]="horaFin"></ion-datetime>
+    </ion-item>
 </ion-content>
+<ion-footer>
+    <ion-button (click)="editarEvento()" color="success">Actualizar Evento</ion-button>
+</ion-footer>
