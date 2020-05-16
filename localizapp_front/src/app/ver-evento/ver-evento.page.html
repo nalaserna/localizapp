@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>{{ selectedEvento.nombre }}</ion-title>
+    <ion-button color="success" shape="circle" fill="clear">
+      <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
@@ -31,9 +34,15 @@
     <label>
     Descripcion: 
     <br>
-    
     <ion-text color="black"><p> {{ selectedEvento.descripcion }} </p></ion-text>
-    
     </label>
   </ion-item>
 </ion-content>
+<ion-footer>
+  <ion-button color="danger" shape="circle" fill="clear">
+    <ion-icon name="trash-outline"></ion-icon>
+  </ion-button>
+  <ion-button color="tertiary" shape="circle" fill="clear">
+    <ion-icon name="pencil-outline"></ion-icon>
+  </ion-button>
+</ion-footer>
