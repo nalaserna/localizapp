@@ -21,13 +21,13 @@
   </ion-item>
   <ion-item>
    <ion-label>Hora Inicio:
-    <p>  {{ selectedEvento.horaInicio }} </p>
+    <p>  {{ selectedEvento.horaInicio | date : 'hh:mm a'}} </p>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
      Hora Fin:
-     <p> {{ selectedEvento.horaFin }} </p>
+     <p> {{ selectedEvento.horaFin | date : 'hh:mm a'}} </p>
      </ion-label>
    </ion-item>
    <ion-item>
