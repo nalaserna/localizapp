@@ -26,4 +26,11 @@ export class VerEventoPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  deleteEvento(){
+    this.eventoService.deleteEvento(this.eventoid).subscribe((res) => {
+      console.log(res);
+    });
+    this.dismiss();
+  }
+
 }
