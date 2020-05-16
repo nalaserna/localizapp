@@ -22,4 +22,8 @@ export class VerEventoPage implements OnInit {
 
   }
 
+  dismiss() {
+    this.modalCtrl.dismiss();
+  }
+
 }
