@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'ver-evento',
     loadChildren: () => import('./ver-evento/ver-evento.module').then( m => m.VerEventoPageModule)
   },
+  {
+    path: 'editar-evento',
+    loadChildren: () => import('./editar-evento/editar-evento.module').then( m => m.EditarEventoPageModule)
+  },
 
 ];
 
