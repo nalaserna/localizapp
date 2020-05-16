@@ -7,29 +7,33 @@
 <ion-content>
   <ion-item>
     <ion-label>
-    Fecha Inicio: {{ selectedEvento.fechaInicio | date : 'dd MMMM yyyy' }}
+      Fecha Inicio:
+     <p> {{ selectedEvento.fechaInicio | date : 'dd MMMM yyyy' }}</p>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha Fin:
+    <p>  {{ selectedEvento.fechaFin | date : 'dd MMMM yyyy' }}</p>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+   <ion-label>Hora Inicio:
+    <p>  {{ selectedEvento.horaInicio }} </p>
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-label>
-    Fecha Fin: {{ selectedEvento.fechaFin | date : 'dd MMMM yyyy' }}
-    </ion-label>
-  </ion-item>
-  <ion-item>
-   <ion-label>
-    Hora Inicio {{ selectedEvento.horaInicio }}
-    </ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>
-     Hora Fin {{ selectedEvento.horaFin }}
+     Hora Fin:
+     <p> {{ selectedEvento.horaFin }} </p>
      </ion-label>
    </ion-item>
    <ion-item>
-    <ion-label>
-    Descripcion: {{ selectedEvento.descripcion }}
-    </ion-label>
+    <label>
+    Descripcion: 
+    <br>
+    
+    <ion-text color="black"><p> {{ selectedEvento.descripcion }} </p></ion-text>
+    
+    </label>
   </ion-item>
-
-
 </ion-content>
