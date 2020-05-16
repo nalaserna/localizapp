@@ -10,8 +10,16 @@
       </ion-toolbar>
   </ion-list-header>
   <ion-item *ngFor="let evento of eventList">
+ <!--   <ion-button shape="round" fill="clear" size="small" color="danger">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>-->
+    <ion-button shape="round" fill="clear" size="small" (click)="verEvento(evento.idevento)">
+      <ion-icon name="eye-outline"></ion-icon>
+    </ion-button>
     <ion-label>{{evento.nombre}}</ion-label>
+   
     <ion-radio [value]="evento.nombre"></ion-radio>
+    
   </ion-item>
 </ion-radio-group>
 </ion-list>

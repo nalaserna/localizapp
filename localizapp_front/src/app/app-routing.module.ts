@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'neweventmodal',
     loadChildren: () => import('./neweventmodal/neweventmodal.module').then( m => m.NeweventmodalPageModule)
   },
+  {
+    path: 'ver-evento',
+    loadChildren: () => import('./ver-evento/ver-evento.module').then( m => m.VerEventoPageModule)
+  },
 
 ];
 

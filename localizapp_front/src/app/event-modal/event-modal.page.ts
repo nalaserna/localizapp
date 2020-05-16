@@ -3,6 +3,7 @@ import { EventoService } from '../services/evento.service';
 import { Evento } from '../model/Evento';
 import { ModalController } from '@ionic/angular';
 import { NeweventmodalPage } from '../neweventmodal/neweventmodal.page';
+import { VerEventoPage } from '../ver-evento/ver-evento.page';
 
 @Component({
   selector: 'app-event-modal',
@@ -53,5 +54,30 @@ export class EventModalPage implements OnInit {
       return await modal.present();
     }
 
+    async verEvento(id){
+      const modal = await this.modalCtrl.create({
+        component: VerEventoPage,
+        componentProps: {
+          eventoid: id
+        }
+      });
+        modal.onDidDismiss().then( data=>{
+          this.eventoService.getAllEventos().subscribe((res) => {
+            this.eventList = res;
+            console.log(this.eventList);
+          });
+        }
+          );
+          
+          /*data =>{
+        this.selectedEventId = data.data;
+        console.log("Recibido " +this.selectedEventId);
+        if(this.selectedEventId != null){
+          this.selectEvent();
+        }
+      });*/
+      return await modal.present();
+
+    }
 
 }

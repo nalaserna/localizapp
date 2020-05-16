@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { EventoModalComponent } from './evento-modal.component';
+import { VerEventoPage } from './ver-evento.page';
 
-describe('EventoModalComponent', () => {
-  let component: EventoModalComponent;
-  let fixture: ComponentFixture<EventoModalComponent>;
+describe('VerEventoPage', () => {
+  let component: VerEventoPage;
+  let fixture: ComponentFixture<VerEventoPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventoModalComponent ],
+      declarations: [ VerEventoPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(EventoModalComponent);
+    fixture = TestBed.createComponent(VerEventoPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

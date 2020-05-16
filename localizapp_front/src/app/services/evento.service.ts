@@ -38,5 +38,13 @@ export class EventoService {
        return this.http.post<Evento>(environment.urlCreateEvento, httpParams);
      }
 
+     public deleteEvento(eventoid: string):Observable<String>{
+        const parametros = new HttpParams()
+        .set('id',eventoid);
+        let httpParams = parametros;
+
+        return this.http.post<String>(environment.urlDeleteEvento, httpParams);
+     }
+
  
 }
