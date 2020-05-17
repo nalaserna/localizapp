@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ selectedFuncion.nombre }}</ion-title>
+    <ion-button color="success" fill="clear" (click)="dismiss()">
+      <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <b>Fecha Inicio:</b> {{ selectedFuncion.fechaInicio | date : 'dd/MMMM/yyyy'}} 
+  </ion-item>
+  <ion-item>
+    <b>Fecha Fin:</b> {{ selectedFuncion.fechaFin | date : 'dd/MMMM/yyyy'}} 
+  </ion-item>
+  <ion-item>
+    <b>Hora Inicio:</b> {{ selectedFuncion.horaInicio | date : 'hh:mm a'}} 
+  </ion-item>
+  <ion-item>
+    <b>Hora Fin:</b> {{ selectedFuncion.horaFin | date : 'hh:mm a'}} 
+  </ion-item>
+  <ion-item>
+    <ion-text>
+      <b>Descripción: </b>
+      {{ selectedFuncion.descripcion }}
+    </ion-text>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <ion-button color="danger" fill="clear" (click)="deleteFuncion()">
+    <ion-icon name="trash-outline"></ion-icon>
+  </ion-button>
+  <ion-button color="secondary" fill="clear">
+    <ion-icon name="pencil-outline"></ion-icon>
+  </ion-button>
+</ion-footer>

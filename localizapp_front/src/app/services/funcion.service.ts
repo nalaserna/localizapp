@@ -19,4 +19,20 @@ export class FuncionService {
 
     return this.http.post<Funcion[]>(environment.urlGetFuncionesByPunto, httpParams);
   }
+
+  public deleteFuncion(idfuncion: string):Observable<String>{
+    const parametros = new HttpParams()
+    .set('id', idfuncion);
+    let httpParams = parametros;
+
+    return this.http.post<String>(environment.urldeleteFuncion, httpParams);
+  }
+
+  public getFuncionById(idfuncion:string):Observable<Funcion>{
+    const parametros = new HttpParams()
+    .set('id', idfuncion);
+    let httpParams = parametros;
+
+    return this.http.post<Funcion>(environment.urlgetFuncionById, httpParams);
+  }
 }

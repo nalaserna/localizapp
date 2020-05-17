@@ -14,7 +14,9 @@ export const environment = {
   urlGetEventoByNombre: 'http://localhost:8084/getEventoByNombre',
   urlNewPunto: 'http://localhost:8084/newPunto',
   urlGetPuntoById: 'http://localhost:8084/getPuntoById',
-  urlGetFuncionesByPunto: 'http://localhost:8084/getFuncionByPunto'
+  urlGetFuncionesByPunto: 'http://localhost:8084/getFuncionByPunto',
+  urldeleteFuncion: 'http://localhost:8084/deleteFuncion',
+  urlgetFuncionById: 'http://localhost:8084/getFuncionById'
 };
 
 /*

@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'ver-punto-modal',
     loadChildren: () => import('./ver-punto-modal/ver-punto-modal.module').then( m => m.VerPuntoModalPageModule)
   },
+  {
+    path: 'verfuncionmodal',
+    loadChildren: () => import('./verfuncionmodal/verfuncionmodal.module').then( m => m.VerfuncionmodalPageModule)
+  },
 
 ];
 

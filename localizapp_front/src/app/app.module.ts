@@ -21,6 +21,7 @@ import { EditarEventoPage } from './editar-evento/editar-evento.page';
 import { NewpuntomodalPage } from './newpuntomodal/newpuntomodal.page';
 import { NewFuncionmodalPage } from './new-funcionmodal/new-funcionmodal.page';
 import { VerPuntoModalPage } from './ver-punto-modal/ver-punto-modal.page';
+import { VerfuncionmodalPage } from './verfuncionmodal/verfuncionmodal.page';
 
 
 @NgModule({
@@ -37,8 +38,10 @@ import { VerPuntoModalPage } from './ver-punto-modal/ver-punto-modal.page';
     EditarEventoPage,
     NewpuntomodalPage,
     NewFuncionmodalPage,
-    VerPuntoModalPage],
-  entryComponents: [EventModalPage, NeweventmodalPage, VerEventoPage,EditarEventoPage,NewpuntomodalPage,NewFuncionmodalPage,VerPuntoModalPage],
+    VerPuntoModalPage,
+    VerfuncionmodalPage],
+  entryComponents: [EventModalPage, NeweventmodalPage, VerEventoPage,EditarEventoPage,NewpuntomodalPage,
+    NewFuncionmodalPage,VerPuntoModalPage, VerfuncionmodalPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     StatusBar,
