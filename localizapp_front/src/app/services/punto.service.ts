@@ -38,4 +38,11 @@ export class PuntoService {
     return this.http.post<String>(environment.urlNewPunto, httpParams);
   }
 
+  public getPuntoById(puntoid: string):Observable<Punto>{
+    const parametros = new HttpParams()
+    .set('id', puntoid);
+    let httpParams = parametros;
+
+    return this.http.post<Punto>(environment.urlGetPuntoById, httpParams);
+  }
 }

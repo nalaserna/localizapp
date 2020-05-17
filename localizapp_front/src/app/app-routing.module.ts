@@ -31,6 +31,14 @@ const routes: Routes = [
     path: 'newpuntomodal',
     loadChildren: () => import('./newpuntomodal/newpuntomodal.module').then( m => m.NewpuntomodalPageModule)
   },
+  {
+    path: 'new-funcionmodal',
+    loadChildren: () => import('./new-funcionmodal/new-funcionmodal.module').then( m => m.NewFuncionmodalPageModule)
+  },
+  {
+    path: 'ver-punto-modal',
+    loadChildren: () => import('./ver-punto-modal/ver-punto-modal.module').then( m => m.VerPuntoModalPageModule)
+  },
 
 ];
 

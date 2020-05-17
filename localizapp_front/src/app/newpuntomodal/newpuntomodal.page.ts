@@ -3,6 +3,8 @@ import { ModalController, IonDatetime } from '@ionic/angular';
 import { EventoService } from '../services/evento.service';
 import { PuntoService } from '../services/punto.service';
 
+
+
 @Component({
   selector: 'app-newpuntomodal',
   templateUrl: './newpuntomodal.page.html',
@@ -36,7 +38,7 @@ export class NewpuntomodalPage implements OnInit {
     })
 
     this.modalCtrl.dismiss(this.eventoid);
-  }
+  }  
 
 
 

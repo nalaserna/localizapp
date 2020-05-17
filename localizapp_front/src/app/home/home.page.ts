@@ -12,6 +12,8 @@ import { Evento } from '../model/Evento';
 import { interval, Observable, Subscription } from 'rxjs';
 import { EventModalPage } from '../event-modal/event-modal.page';
 import { NewpuntomodalPage } from '../newpuntomodal/newpuntomodal.page';
+import { NewFuncionmodalPage } from '../new-funcionmodal/new-funcionmodal.page';
+import { VerPuntoModalPage } from '../ver-punto-modal/ver-punto-modal.page';
 
 @Component({
   selector: 'app-home',
@@ -123,7 +125,11 @@ public selectEvent() {
       let long: number = parseFloat(coord[1]);
       this.markers.push(new Marker([lat, long], {icon: customMarkerIcon2}))
       this.markers[i].bindPopup(`<b>${this.misPuntos[i].nombre}</b>`, { autoClose: false })
-      .addTo(this.map).openPopup();
+      .addTo(this.map).openPopup()
+      .on('click', () => {
+        let id = this.misPuntos[i].idpunto;
+        this.verPunto(id);
+      });
     }
     this.map.invalidateSize();
    });
@@ -273,6 +279,25 @@ private eventSubscribe() {
           eventoid: id,
           lat: this.newmarkerlat,
           lng: this.newmarkerlng
+        }
+      });
+        modal.onDidDismiss().then( data=>{
+          this.selectedEventId = data.data;
+          console.log("DEVOLVIENDO EVENTO: " +data.data);
+          if(this.selectedEventId != null){
+            this.selectEvent();
+          }
+          });
+        
+      return await modal.present();
+
+    }
+
+    async verPunto(id){
+      const modal = await this.modalController.create({
+        component: VerPuntoModalPage,
+        componentProps: {
+          puntoid: id
         }
       });
         modal.onDidDismiss().then( data=>{
