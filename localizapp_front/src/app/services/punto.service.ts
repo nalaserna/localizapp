@@ -27,4 +27,15 @@ export class PuntoService {
     return this.http.post<Punto[]>(environment.urlPuntoByNombreEvento, httpParams);
   }
 
+  public newPunto(eventoid: string, nombre: string, coordenadas:string):Observable<String>{
+    const parametros = new HttpParams()
+    .set('nombre', nombre)
+    .set('idEvento', eventoid)
+    .set('coordenadas', coordenadas)
+    .set('idUsuario', "1");
+    let httpParams = parametros;
+    
+    return this.http.post<String>(environment.urlNewPunto, httpParams);
+  }
+
 }

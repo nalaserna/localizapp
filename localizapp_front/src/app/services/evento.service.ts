@@ -62,5 +62,13 @@ export class EventoService {
 
       }
 
+      public getEventoByNombre(nombre: string):Observable<Evento>{
+        const parametros= new HttpParams()
+        .set('nombre', nombre);
+        let httpParams = parametros;
+
+        return this.http.post<Evento>(environment.urlGetEventoByNombre, httpParams);
+      }
+
  
 }

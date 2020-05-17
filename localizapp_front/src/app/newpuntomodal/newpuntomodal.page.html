@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>newpuntomodal</ion-title>
+    <ion-title>Nuevo Punto - {{ selectedEvento.nombre }} </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
-</ion-content>
+  <ion-item>
+  <ion-input placeholder="Nombre Punto de Interés" type="text" [(ngModel)]="nombre"></ion-input>
+</ion-item>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<ion-footer>
+  <ion-button color="success" (click)="crearPunto()">Crear</ion-button>
+  <ion-button color="primary" (click)="crearYAgregarFuncion()">Agregar Función</ion-button>
+</ion-footer>

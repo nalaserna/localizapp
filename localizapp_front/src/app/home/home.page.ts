@@ -32,6 +32,8 @@ export class HomePage {
   @Input() public selectedEventId;
   private markers: Array<Marker>;
   private newmarker: Marker;
+  newmarkerlat: number;
+  newmarkerlng: number;
  
   
   constructor(
@@ -242,12 +244,13 @@ private eventSubscribe() {
         iconSize: [50, 60], 
         popupAnchor: [0, -20]
       });
-      var lat = this.map.getCenter().lat;
-      var long = this.map.getCenter().lng;
-      this.newmarker = new Marker([lat, long], {icon: customMarkerIcon, draggable:true})
+      this.newmarkerlat = this.map.getCenter().lat;
+      this.newmarkerlng = this.map.getCenter().lng;
+      this.newmarker = new Marker([this.newmarkerlat, this.newmarkerlng], {icon: customMarkerIcon, draggable:true})
       .bindPopup(`Muéveme y haz click <br>para agregar un punto`, { autoClose: false }).addTo(this.map).openPopup()
       .on('click', () => {
         if(this.selectedEventId != null){
+        this.map.removeLayer(this.newmarker);
         this.addPunto(this.selectedEventId);
         }else if (this.selectedEventId == null){
           alert("Elija un evento para crear un punto");
@@ -257,8 +260,8 @@ private eventSubscribe() {
       .on('dragend',function(event){
           var marker = event.target;
           var result = marker.getLatLng();
-          lat = result.lat;
-          long = result.lng;
+          this.newmarkerlat = result.lat;
+          this.newmarkerlng = result.lng;
       });
       
     }
@@ -267,11 +270,14 @@ private eventSubscribe() {
       const modal = await this.modalController.create({
         component: NewpuntomodalPage,
         componentProps: {
-          eventoid: id
+          eventoid: id,
+          lat: this.newmarkerlat,
+          lng: this.newmarkerlng
         }
       });
         modal.onDidDismiss().then( data=>{
           this.selectedEventId = data.data;
+          console.log("DEVOLVIENDO EVENTO: " +data.data);
           if(this.selectedEventId != null){
             this.selectEvent();
           }
