@@ -243,7 +243,7 @@ private eventSubscribe() {
       });
       var lat = this.map.getCenter().lat;
       var long = this.map.getCenter().lng;
-      this.newmarker = new Marker([lat, long], {icon: customMarkerIcon}).addTo(this.map); 
+      this.newmarker = new Marker([lat, long], {icon: customMarkerIcon, draggable:true}).addTo(this.map); 
       console.log(this.map.getCenter());
 
     }
