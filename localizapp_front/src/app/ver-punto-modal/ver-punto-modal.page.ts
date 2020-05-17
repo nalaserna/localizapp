@@ -6,6 +6,7 @@ import { ModalController, IonDatetime } from '@ionic/angular';
 import { FuncionService } from '../services/funcion.service';
 import { Funcion } from '../model/Funcion';
 import { VerfuncionmodalPage } from '../verfuncionmodal/verfuncionmodal.page';
+import { AddfuncionmodalPage } from '../addfuncionmodal/addfuncionmodal.page';
 
 @Component({
   selector: 'app-ver-punto-modal',
@@ -53,7 +54,25 @@ export class VerPuntoModalPage implements OnInit {
         });
         });
     return await modal.present();
+  }
 
+  async addFuncion(){
+    const modal = await this.modalCtrl.create({
+      component: AddfuncionmodalPage,
+      componentProps: {
+        puntoid: this.puntoid
+      }
+    });
+      modal.onDidDismiss().then( data =>{
+        this.funcionService.getFuncionesByPunto(data.data).subscribe((res)=>{
+          this.funciones = res;
+        });
+        });
+    return await modal.present();
+  }
+
+  dismiss(){
+    this.modalCtrl.dismiss(this.selectedPunto.eventoid);
   }
   
 

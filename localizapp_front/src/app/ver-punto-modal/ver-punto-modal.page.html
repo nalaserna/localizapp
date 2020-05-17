@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>{{ selectedPunto.nombre }}</ion-title>
-  <ion-button color="success" fill="clear">
+  <ion-button color="success" fill="clear" (click)="dismiss()">
     <ion-icon name="arrow-back-circle-outline"></ion-icon>
   </ion-button>
   </ion-toolbar>
@@ -31,7 +31,7 @@
   <ion-button color="secondary" fill="clear">
     <ion-icon name="pencil-outline"></ion-icon>
   </ion-button>
-  <ion-button color="success" fill="clear">Función
+  <ion-button color="success" fill="clear" (click)="addFuncion()">Función
     <ion-icon name="add-circle"></ion-icon>
   </ion-button>
 </ion-footer>

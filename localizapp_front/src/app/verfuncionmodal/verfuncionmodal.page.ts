@@ -59,14 +59,6 @@ export class VerfuncionmodalPage implements OnInit {
         });
       }
         );
-        
-        /*data =>{
-      this.selectedEventId = data.data;
-      console.log("Recibido " +this.selectedEventId);
-      if(this.selectedEventId != null){
-        this.selectEvent();
-      }
-    });*/
     return await modal.present();
 
   }
