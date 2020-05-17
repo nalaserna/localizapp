@@ -28,17 +28,32 @@ export class EditarEventoPage implements OnInit {
   }
 
   editarEvento(){
-    /*  this.eventoService.editarEvento(this.eventoid,this.nombre, this.descripcion, this.fechaInicio, this.fechaFin, this.horaInicio,
+      if(this.nombre == null){
+        this.nombre = this.selectedEvento.nombre;
+      }
+      if(this.descripcion == null){
+        this.descripcion = this.selectedEvento.descripcion;
+      }
+      if(this.fechaInicio == null){
+        this.fechaInicio = this.selectedEvento.fechaInicio;
+      }
+      if(this.fechaFin == null){
+        this.fechaFin = this.selectedEvento.fechaFin;
+      }
+      if(this.horaInicio == null){
+        this.horaInicio = this.selectedEvento.horaInicio;
+      }
+      if(this.horaFin == null){
+        this.horaFin = this.selectedEvento.horaFin;
+      }
+      this.eventoService.editarEvento(this.eventoid,this.nombre, this.descripcion, this.fechaInicio, this.fechaFin, this.horaInicio,
         this.horaFin).subscribe((res) => {
           console.log(res);
       });
       let data = this.eventoid;
       console.log(this.nombre);
-      this.modalCtrl.dismiss(data);*/
+      this.modalCtrl.dismiss(data);
       console.log("id: " +this.eventoid);
-      console.log("Nuevo nombre: " +this.nombre);
-      console.log("Nueva fechaInicio: " +this.fechaInicio);
-      console.log("Nueva fechaFin: " +this.fechaFin);
   }
 
 }
