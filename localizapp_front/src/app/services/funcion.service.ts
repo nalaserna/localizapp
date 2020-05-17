@@ -35,4 +35,21 @@ export class FuncionService {
 
     return this.http.post<Funcion>(environment.urlgetFuncionById, httpParams);
   }
+  public updateFuncion(funcionid: string, nombre:string, descripcion:string, fechaInicio: string, fechaFin: string, horaInicio:string,
+    horaFin: string, poligonoId: string, puntoId: string):Observable<String>{
+      const parametros = new HttpParams()
+      .set('funcionId', funcionid)
+      .set('nombre', nombre)
+      .set('fechaInicio', fechaInicio)
+      .set('fechaFin', fechaFin)
+      .set('horaInicio', horaInicio)
+      .set('horaFin', horaFin)
+      .set('descripcion', descripcion)
+      .set('poligonoId', poligonoId)
+      .set('puntoId', puntoId);
+      let httpParams = parametros;
+      
+      return this.http.post<String>(environment.urlUpdateFuncion, httpParams);
+
+    }
 }

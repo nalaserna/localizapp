@@ -5,6 +5,7 @@ import { EventoService } from '../services/evento.service';
 import { ModalController, IonDatetime } from '@ionic/angular';
 import { FuncionService } from '../services/funcion.service';
 import { Funcion } from '../model/Funcion';
+import { EditarfuncionmodalPage } from '../editarfuncionmodal/editarfuncionmodal.page';
 
 
 
@@ -17,6 +18,7 @@ export class VerfuncionmodalPage implements OnInit {
  @Input() funcionid;
  selectedFuncion;
  @Input() puntoid;
+
 
   constructor(private eventoService: EventoService, 
     private modalCtrl: ModalController,
@@ -41,5 +43,33 @@ export class VerfuncionmodalPage implements OnInit {
     });
     this.dismiss();
   }
+
+  async editarFuncion(){
+    const modal = await this.modalCtrl.create({
+      component: EditarfuncionmodalPage,
+      componentProps: {
+        funcionid: this.funcionid
+      }
+    });
+      modal.onDidDismiss().then( data =>{
+        this.funcionid = data.data;
+        this.funcionService.getFuncionById(this.funcionid).subscribe((res) => {
+          this.selectedFuncion = res;
+          console.log(this.selectedFuncion);
+        });
+      }
+        );
+        
+        /*data =>{
+      this.selectedEventId = data.data;
+      console.log("Recibido " +this.selectedEventId);
+      if(this.selectedEventId != null){
+        this.selectEvent();
+      }
+    });*/
+    return await modal.present();
+
+  }
+  
 
 }

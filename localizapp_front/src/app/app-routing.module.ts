@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'verfuncionmodal',
     loadChildren: () => import('./verfuncionmodal/verfuncionmodal.module').then( m => m.VerfuncionmodalPageModule)
   },
+  {
+    path: 'editarfuncionmodal',
+    loadChildren: () => import('./editarfuncionmodal/editarfuncionmodal.module').then( m => m.EditarfuncionmodalPageModule)
+  },
 
 ];
 
