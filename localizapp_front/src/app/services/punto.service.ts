@@ -26,7 +26,7 @@ export class PuntoService {
     let httpParams = parametros;
     return this.http.post<Punto[]>(environment.urlPuntoByNombreEvento, httpParams);
   }
-
+ 
   public newPunto(eventoid: string, nombre: string, coordenadas:string):Observable<String>{
     const parametros = new HttpParams()
     .set('nombre', nombre)

@@ -13,7 +13,8 @@ export const environment = {
   urlUpdateEvento: 'http://localhost:8084/updateEvento',
   urlGetEventoByNombre: 'http://localhost:8084/getEventoByNombre',
   urlNewPunto: 'http://localhost:8084/newPunto',
-  urlGetPuntoById: 'http://localhost.8084/getPuntoById'
+  urlGetPuntoById: 'http://localhost:8084/getPuntoById',
+  urlGetFuncionesByPunto: 'http://localhost:8084/getFuncionByPunto'
 };
 
 /*

@@ -1,9 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>verPuntoModal</ion-title>
+    <ion-title>{{ selectedPunto.nombre }}</ion-title>
+  <ion-button color="success" fill="clear">
+    <ion-icon name="arrow-back-circle-outline"></ion-icon>
+  </ion-button>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+<ion-list>
+  <ion-item *ngFor="let funcion of funciones" text-wrap>
+  <ion-label>
+    
+      <h2>{{ funcion.nombre }}</h2>
+      <p>{{ funcion.descripcion }} </p>
+      <p> <b>Fecha Inicio:</b> {{ funcion.fechaInicio | date : 'dd/MMMM/yyyy'}} </p>
+      <p> <b>Fecha Fin:</b> {{ funcion.fechaFin | date : 'dd/MMMM/yyyy'}} </p>
+      <p> <b>Hora Inicio:</b> {{ funcion.horaInicio | date : 'hh:mm a'}} </p>
+      <p> <b>Hora Fin:</b> {{ funcion.horaFin | date : 'hh:mm a'}} </p>
+      <ion-button color="danger" fill="clear" (click)="eliminarFuncion(funcion.idfuncion)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+  </ion-label>
+  </ion-item>
+</ion-list>
 </ion-content>
+
+<ion-footer>
+  <ion-button color="danger" fill="clear">
+    <ion-icon name="trash-outline"></ion-icon>
+  </ion-button>
+  <ion-button color="secondary" fill="clear">
+    <ion-icon name="pencil-outline"></ion-icon>
+  </ion-button>
+  <ion-button color="success" fill="clear">Función
+    <ion-icon name="add-circle"></ion-icon>
+  </ion-button>
+</ion-footer>
