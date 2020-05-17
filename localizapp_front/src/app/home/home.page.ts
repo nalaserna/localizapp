@@ -11,6 +11,7 @@ import { EventoService } from '../services/evento.service';
 import { Evento } from '../model/Evento';
 import { interval, Observable, Subscription } from 'rxjs';
 import { EventModalPage } from '../event-modal/event-modal.page';
+import { NewpuntomodalPage } from '../newpuntomodal/newpuntomodal.page';
 
 @Component({
   selector: 'app-home',
@@ -243,10 +244,43 @@ private eventSubscribe() {
       });
       var lat = this.map.getCenter().lat;
       var long = this.map.getCenter().lng;
-      this.newmarker = new Marker([lat, long], {icon: customMarkerIcon, draggable:true}).addTo(this.map); 
-      console.log(this.map.getCenter());
+      this.newmarker = new Marker([lat, long], {icon: customMarkerIcon, draggable:true})
+      .bindPopup(`Muéveme y haz click <br>para agregar un punto`, { autoClose: false }).addTo(this.map).openPopup()
+      .on('click', () => {
+        if(this.selectedEventId != null){
+        this.addPunto(this.selectedEventId);
+        }else if (this.selectedEventId == null){
+          alert("Elija un evento para crear un punto");
+        }
+      }
+      )
+      .on('dragend',function(event){
+          var marker = event.target;
+          var result = marker.getLatLng();
+          lat = result.lat;
+          long = result.lng;
+      });
+      
+    }
+
+    async addPunto(id){
+      const modal = await this.modalController.create({
+        component: NewpuntomodalPage,
+        componentProps: {
+          eventoid: id
+        }
+      });
+        modal.onDidDismiss().then( data=>{
+          this.selectedEventId = data.data;
+          if(this.selectedEventId != null){
+            this.selectEvent();
+          }
+          });
+        
+      return await modal.present();
 
     }
+
     
 }
 

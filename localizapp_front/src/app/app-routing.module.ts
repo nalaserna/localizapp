@@ -27,6 +27,10 @@ const routes: Routes = [
     path: 'editar-evento',
     loadChildren: () => import('./editar-evento/editar-evento.module').then( m => m.EditarEventoPageModule)
   },
+  {
+    path: 'newpuntomodal',
+    loadChildren: () => import('./newpuntomodal/newpuntomodal.module').then( m => m.NewpuntomodalPageModule)
+  },
 
 ];
 
