@@ -7,6 +7,7 @@ import { FuncionService } from '../services/funcion.service';
 import { Funcion } from '../model/Funcion';
 import { VerfuncionmodalPage } from '../verfuncionmodal/verfuncionmodal.page';
 import { AddfuncionmodalPage } from '../addfuncionmodal/addfuncionmodal.page';
+import { EditpuntomodalPage } from '../editpuntomodal/editpuntomodal.page';
 
 @Component({
   selector: 'app-ver-punto-modal',
@@ -32,12 +33,6 @@ export class VerPuntoModalPage implements OnInit {
   this.funcionService.getFuncionesByPunto(this.puntoid).subscribe((res)=>{
     this.funciones = res;
   })
-  }
-
-  public eliminarFuncion(id){
-    this.funcionService.deleteFuncion(id).subscribe((res)=>{
-      console.log(res);
-    })
   }
 
   async verFuncion(id){
@@ -73,6 +68,25 @@ export class VerPuntoModalPage implements OnInit {
 
   dismiss(){
     this.modalCtrl.dismiss(this.selectedPunto.eventoid);
+  }
+  
+  async editPunto(){
+    const modal = await this.modalCtrl.create({
+      component: EditpuntomodalPage,
+      componentProps: {
+        puntoid: this.puntoid
+      }
+    });
+      modal.onDidDismiss().then( data =>{
+        this.puntoService.getPuntoById(data.data).subscribe((res)=>{
+          this.selectedPunto = res;
+          console.log(res);
+      })
+        this.funcionService.getFuncionesByPunto(data.data).subscribe((res)=>{
+          this.funciones = res;
+        });
+        });
+    return await modal.present();
   }
   
 

@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'addfuncionmodal',
     loadChildren: () => import('./addfuncionmodal/addfuncionmodal.module').then( m => m.AddfuncionmodalPageModule)
   },
+  {
+    path: 'editpuntomodal',
+    loadChildren: () => import('./editpuntomodal/editpuntomodal.module').then( m => m.EditpuntomodalPageModule)
+  },
 
 ];
 

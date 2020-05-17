@@ -45,4 +45,16 @@ export class PuntoService {
 
     return this.http.post<Punto>(environment.urlGetPuntoById, httpParams);
   }
+
+  public updatePunto(puntoid: string, nombre:string, idEvento: string, idUsuario: string, coordenadas: string):Observable<String>{
+    const parametros = new HttpParams()
+    .set('puntoID', puntoid)
+    .set('nombre', nombre)
+    .set('idEvento', idEvento)
+    .set('idUsuario', idUsuario)
+    .set('coordenadas', coordenadas);
+    let httpParams = parametros;
+
+    return this.http.post<String>(environment.urlUpdatePunto, httpParams);
+  }
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Nuevo Punto - {{ selectedEvento.nombre }} </ion-title>
+    <ion-title> {{ selectedPunto.nombre }}<ion-icon name="pencil-outline"></ion-icon> </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -26,5 +26,5 @@
 <br>
 <br>
 <ion-footer>
-  <ion-button color="success" (click)="crearPunto()">Crear</ion-button>
+  <ion-button color="success" (click)="actualizarPunto()">Actualizar</ion-button>
 </ion-footer>

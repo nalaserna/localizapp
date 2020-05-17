@@ -18,7 +18,8 @@ export const environment = {
   urldeleteFuncion: 'http://localhost:8084/deleteFuncion',
   urlgetFuncionById: 'http://localhost:8084/getFuncionById',
   urlUpdateFuncion: 'http://localhost:8084/updateFuncion',
-  urlNewFuncion: 'http://localhost:8084/newFuncion'
+  urlNewFuncion: 'http://localhost:8084/newFuncion',
+  urlUpdatePunto: 'http://localhost:8084/updatePunto'
 };
 
 /*
