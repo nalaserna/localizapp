@@ -30,6 +30,7 @@ export class HomePage {
   public eventList;
   @Input() public selectedEventId;
   private markers: Array<Marker>;
+  private newmarker: Marker;
  
   
   constructor(
@@ -228,11 +229,24 @@ private eventSubscribe() {
       }
     } */
 
-    public verMisEventos(){
-      this.router.navigate(['/misEventos']);
+    public addMarker(){
+      const customMarkerIcon = icon({
+        iconUrl: 'assets/images/nati.png',
+        iconSize: [50, 60], 
+        popupAnchor: [0, -20]
+      });
+    
+      const customMarkerIcon2 = icon({
+        iconUrl: 'assets/images/existente.png',
+        iconSize: [50, 60], 
+        popupAnchor: [0, -20]
+      });
+      var lat = this.map.getCenter().lat;
+      var long = this.map.getCenter().lng;
+      this.newmarker = new Marker([lat, long], {icon: customMarkerIcon}).addTo(this.map); 
+      console.log(this.map.getCenter());
+
     }
-
-
     
 }
 

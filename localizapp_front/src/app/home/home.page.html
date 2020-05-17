@@ -8,9 +8,14 @@
  
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title size="small">Mapa</ion-title>
+   <!-- <ion-title size="small">Mapa</ion-title>-->
     <ion-item slot="primary">
-      <ion-button (click)="presentModal()">Eventos</ion-button>
+      <ion-button (click)="presentModal()" size="small" fill="outline">Eventos
+        <ion-icon name="chevron-down-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="addMarker()" color="success" fill="outline" shape="circle" size="small">Punto
+        <ion-icon name="add-circle-sharp"></ion-icon>
+      </ion-button>
       <!--<ion-label fill="clear" color="secondary">
         Elige un evento
       </ion-label>
@@ -26,6 +31,5 @@
   <ion-content>
     <div id="map" style="height:100%; height: 100%" leaflet (leafletMapReady)="onMapReady($event)"></div>
   </ion-content>  
-
-
 </ion-content>
+

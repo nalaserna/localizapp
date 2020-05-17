@@ -8,6 +8,7 @@
          <ion-icon name="add-circle"></ion-icon>
         </ion-button>
       </ion-toolbar>
+      
   </ion-list-header>
   <ion-item *ngFor="let evento of eventList">
  <!--   <ion-button shape="round" fill="clear" size="small" color="danger">
@@ -25,6 +26,6 @@
 </ion-list>
 
 <ion-footer>
-  <ion-button (click)="dismiss()">Aceptar</ion-button>
+  <ion-button (click)="dismiss()" fill="outline">Seleccionar</ion-button>
   
 </ion-footer>
