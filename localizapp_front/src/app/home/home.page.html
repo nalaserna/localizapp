@@ -9,13 +9,40 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
    <!-- <ion-title size="small">Mapa</ion-title>-->
-    <ion-item slot="primary">
+   <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="search" (click)="busquedaModal()">
+     <!-- <ion-button (click)="busquedaModal()" color="medium" fill="outline" shape="circle" size="small">-->
+      <ion-icon name="search"></ion-icon>
+    <!--  </ion-button>-->
+    </ion-tab-button>
+  
+      <ion-tab-button tab="schedule" (click)="presentModal()">
+     <!-- <ion-button (click)="presentModal()" size="small" fill="outline">-->
+        <ion-icon name="calendar"></ion-icon>
+        <ion-label>Eventos</ion-label>
+    <!--  </ion-button>-->
+    </ion-tab-button>
+  
+    <ion-tab-button tab="add" (click)="addMarker()">
+    <!--<ion-button (click)="addMarker()" color="success" fill="outline" shape="circle" size="small">-->
+        <ion-icon name="add-circle-sharp"></ion-icon>
+        <ion-label>Punto</ion-label>
+     <!-- </ion-button>-->
+     </ion-tab-button>
+
+    </ion-tab-bar>
+  </ion-tabs>
+  <!--  <ion-item slot="primary">
+      <ion-button (click)="busquedaModal()" color="medium" fill="outline" shape="circle" size="small">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
       <ion-button (click)="presentModal()" size="small" fill="outline">Eventos
         <ion-icon name="chevron-down-outline"></ion-icon>
       </ion-button>
       <ion-button (click)="addMarker()" color="success" fill="outline" shape="circle" size="small">Punto
         <ion-icon name="add-circle-sharp"></ion-icon>
-      </ion-button>
+      </ion-button>-->
       <!--<ion-label fill="clear" color="secondary">
         Elige un evento
       </ion-label>
@@ -23,7 +50,7 @@
         <ion-select-option *ngFor="let event of eventList" [value]="event.id">{{event.nombre}}</ion-select-option>
         <ion-select-option [value]="-1">Nuevo Evento</ion-select-option>
       </ion-select>-->
-      </ion-item>
+     <!-- </ion-item>-->
   </ion-toolbar>
 </ion-header>
 

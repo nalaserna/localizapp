@@ -14,6 +14,7 @@ import { EventModalPage } from '../event-modal/event-modal.page';
 import { NewpuntomodalPage } from '../newpuntomodal/newpuntomodal.page';
 import { NewFuncionmodalPage } from '../new-funcionmodal/new-funcionmodal.page';
 import { VerPuntoModalPage } from '../ver-punto-modal/ver-punto-modal.page';
+import { BusquedamodalPage } from '../busquedamodal/busquedamodal.page';
 
 @Component({
   selector: 'app-home',
@@ -293,6 +294,20 @@ private eventSubscribe() {
         
       return await modal.present();
 
+    }
+
+    async busquedaModal(){
+      const modal = await this.modalController.create({
+        component: BusquedamodalPage,
+      });
+        modal.onDidDismiss().then( data=>{
+          this.selectedEventId = data.data;
+          if(this.selectedEventId != null){
+            this.selectEvent();
+            this.map.removeLayer(this.newmarker);
+          }
+          });
+      return await modal.present();
     }
 
     async verPunto(id){
