@@ -266,7 +266,7 @@ private eventSubscribe() {
           alert(this.newmarkerlat + " " +this.newmarkerlng);
         this.addPunto(this.selectedEventId, this.newmarkerlat, this.newmarkerlng);
         }else if (this.selectedEventId == null){
-          this.newmarker.bindPopup('Elija un evento para crear un punto', { autoClose: false}).addTo(this.map).openPopup();
+          this.newmarker.bindPopup('Elija un evento para crear un punto', { autoClose: false}).openPopup();
         }
       });
     }
