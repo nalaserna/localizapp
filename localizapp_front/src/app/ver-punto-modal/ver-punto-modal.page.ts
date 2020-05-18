@@ -67,7 +67,7 @@ export class VerPuntoModalPage implements OnInit {
   }
 
   dismiss(){
-    this.modalCtrl.dismiss(this.selectedPunto.eventoid);
+    this.modalCtrl.dismiss(this.selectedPunto.evento.idevento);
   }
   
   async editPunto(){
@@ -89,5 +89,11 @@ export class VerPuntoModalPage implements OnInit {
     return await modal.present();
   }
   
+  deletePunto(){
+    this.puntoService.deletePunto(this.puntoid).subscribe((res)=>{
+      console.log(res);
+    })
+    this.dismiss();
+  }
 
 }

@@ -34,8 +34,8 @@ export class HomePage {
   @Input() public selectedEventId;
   private markers: Array<Marker>;
   private newmarker: Marker;
-  newmarkerlat: number;
-  newmarkerlng: number;
+  private newmarkerlat: number;
+  private newmarkerlng: number;
  
   
   constructor(
@@ -110,12 +110,12 @@ public selectEvent() {
     iconSize: [50, 60], 
     popupAnchor: [0, -20]
   });
-
+  
   console.log(this.selectedEventId);
   for(let j = 0; j < this.markers.length; j++) {
     this.map.removeLayer(this.markers[j]);
   }
-  this.puntoService.getPuntosByEventoNombre(this.selectedEventId).subscribe(resp =>{
+  this.puntoService.getPuntosByEventoNombre(this.selectedEventId).subscribe(resp =>{    
     this.misPuntos=resp;
     this.markers = [];  
     console.log(this.misPuntos);
@@ -254,31 +254,30 @@ private eventSubscribe() {
       this.newmarkerlng = this.map.getCenter().lng;
       this.newmarker = new Marker([this.newmarkerlat, this.newmarkerlng], {icon: customMarkerIcon, draggable:true})
       .bindPopup(`Muéveme y haz click <br>para agregar un punto`, { autoClose: false }).addTo(this.map).openPopup()
+      .on('dragend',function(event){
+        var marker = event.target;
+        var result = marker.getLatLng();
+        this.newmarkerlat = result.lat;
+        this.newmarkerlng = result.lng;
+        alert(this.newmarkerlat +" " +this.newmarkerlng);
+    })
       .on('click', () => {
         if(this.selectedEventId != null){
-        this.map.removeLayer(this.newmarker);
-        this.addPunto(this.selectedEventId);
+          alert(this.newmarkerlat + " " +this.newmarkerlng);
+        this.addPunto(this.selectedEventId, this.newmarkerlat, this.newmarkerlng);
         }else if (this.selectedEventId == null){
-          alert("Elija un evento para crear un punto");
+          this.newmarker.bindPopup('Elija un evento para crear un punto', { autoClose: false}).addTo(this.map).openPopup();
         }
-      }
-      )
-      .on('dragend',function(event){
-          var marker = event.target;
-          var result = marker.getLatLng();
-          this.newmarkerlat = result.lat;
-          this.newmarkerlng = result.lng;
       });
-      
     }
 
-    async addPunto(id){
+    async addPunto(id, lat, long){
       const modal = await this.modalController.create({
         component: NewpuntomodalPage,
         componentProps: {
           eventoid: id,
-          lat: this.newmarkerlat,
-          lng: this.newmarkerlng
+          lat: lat,
+          lng: long
         }
       });
         modal.onDidDismiss().then( data=>{
@@ -286,6 +285,7 @@ private eventSubscribe() {
           console.log("DEVOLVIENDO EVENTO: " +data.data);
           if(this.selectedEventId != null){
             this.selectEvent();
+            this.map.removeLayer(this.newmarker);
           }
           });
         
@@ -301,7 +301,9 @@ private eventSubscribe() {
         }
       });
         modal.onDidDismiss().then( data=>{
-          this.selectedEventId = data.data;
+          this.eventoService.getEventoById(data.data).subscribe((res)=>{
+            this.selectedEventId = res.nombre;
+          });
           console.log("DEVOLVIENDO EVENTO: " +data.data);
           if(this.selectedEventId != null){
             this.selectEvent();

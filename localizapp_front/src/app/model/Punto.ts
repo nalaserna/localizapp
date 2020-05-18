@@ -1,6 +1,6 @@
 export class Punto {
 
-    public id: number;
+    public idpunto: number;
     public coordenadas: string;
     public nombre: string;
     public evento: number;

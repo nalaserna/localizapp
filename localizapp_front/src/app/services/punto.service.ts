@@ -57,4 +57,12 @@ export class PuntoService {
 
     return this.http.post<String>(environment.urlUpdatePunto, httpParams);
   }
+
+  public deletePunto(puntoid: string):Observable<String>{
+    const parametros = new HttpParams()
+    .set('id', puntoid);
+    let httpParams = parametros;
+
+    return this.http.post<String>(environment.urlDeletePunto, httpParams);
+  }
 }
