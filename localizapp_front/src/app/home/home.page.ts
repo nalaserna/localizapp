@@ -81,7 +81,7 @@ private getCurrentLocation() {
   this.geolocation.getCurrentPosition().then((resp) => {
     this.latitud = resp.coords.latitude;
     this.longitud = resp.coords.longitude;
-    if(!this.misPuntos && !this.newmarker) {
+    if(!this.misPuntos || !this.newmarker) {
       this.map.setView([this.latitud, this.longitud], 19);   
     }
     if(!this.myLocationMarker) {
@@ -254,17 +254,19 @@ private eventSubscribe() {
       this.newmarkerlng = this.map.getCenter().lng;
       this.newmarker = new Marker([this.newmarkerlat, this.newmarkerlng], {icon: customMarkerIcon, draggable:true})
       .bindPopup(`Muéveme y haz click <br>para agregar un punto`, { autoClose: false }).addTo(this.map).openPopup()
-      .on('dragend',function(event){
+     /* .on('dragend',function(event){
         var marker = event.target;
         var result = marker.getLatLng();
         this.newmarkerlat = result.lat;
         this.newmarkerlng = result.lng;
         alert(this.newmarkerlat +" " +this.newmarkerlng);
-    })
-      .on('click', () => {
+    })*/
+      .on('click', (event) =>{
         if(this.selectedEventId != null){
-          alert(this.newmarkerlat + " " +this.newmarkerlng);
-        this.addPunto(this.selectedEventId, this.newmarkerlat, this.newmarkerlng);
+          var marker = event.target;
+          var result = marker.getLatLng();
+          alert("AGREGANDO");
+          this.addPunto(this.selectedEventId, result.lat, result.lng);
         }else if (this.selectedEventId == null){
           this.newmarker.bindPopup('Elija un evento para crear un punto', { autoClose: false}).openPopup();
         }
