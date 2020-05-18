@@ -172,6 +172,12 @@ public class FuncionController {
 		return funcionRepositoryDAO.findByPoligono(poligono);
 	}
 	*/
+	
+	@CrossOrigin
+	@RequestMapping ("/getFuncionLikeNombre")
+	public Iterable<Funcion> getFuncionLikeNombre(@RequestParam String nombre){
+		return funcionRepositoryDAO.findByNombreContainsIgnoreCase(nombre);
+	}
 
 	
 }

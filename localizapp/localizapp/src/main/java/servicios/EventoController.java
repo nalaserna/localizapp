@@ -125,6 +125,12 @@ public class EventoController {
 		return eventoRepositoryDAO.findByNombre(nombre);
 	}
 	
+	@CrossOrigin
+	@RequestMapping ("/getEventoLikeNombre")
+	public Iterable<Evento> getEventoLikeNombre(@RequestParam String nombre){
+		return eventoRepositoryDAO.findByNombreContainsIgnoreCase(nombre);
+	}
+	
 
 	
 }

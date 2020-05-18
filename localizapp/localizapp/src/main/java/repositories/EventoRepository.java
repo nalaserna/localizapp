@@ -24,4 +24,8 @@ public interface EventoRepository extends CrudRepository<Evento, Long> {
 	
 	public List<Evento> findByHoraFin(String horaFin);
 	
+	public List<Evento> findByNombreContainsIgnoreCase(String nombre);
+	
+	
+		
 }

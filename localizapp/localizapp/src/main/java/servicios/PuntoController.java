@@ -54,7 +54,9 @@ public class PuntoController {
 		punto.setCoordenadas(coordenadas);
 		puntoRepositoryDAO.save(punto);
 		
-		return "Nuevo Punto Guardado";
+		String id = Integer.toString(punto.getIdpunto());
+		System.out.println("ID "+id);
+		return id;
 		
 	}
 	
@@ -131,6 +133,12 @@ public class PuntoController {
 	@RequestMapping ("/getPuntoById")
 	public Punto getPuntoById(@RequestParam String id) {
 		return puntoRepositoryDAO.findById(Integer.parseInt(id));
+	}
+	
+	@CrossOrigin
+	@RequestMapping ("/getPuntoLikeNombre")
+	public Iterable<Punto> getPuntoLikeNombre(@RequestParam String nombre){
+		return puntoRepositoryDAO.findByNombreContainsIgnoreCase(nombre);
 	}
 
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
+import entities.Evento;
 import entities.Funcion;
 import entities.Poligono;
 import entities.Punto;
@@ -30,6 +31,7 @@ public interface FuncionRepository extends CrudRepository<Funcion, Long> {
 	
 	public List<Funcion> findByHoraFin(String horaFin);
 	
+	public List<Funcion> findByNombreContainsIgnoreCase(String nombre);
 	
 	
 	
