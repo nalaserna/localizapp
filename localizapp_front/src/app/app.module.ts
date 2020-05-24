@@ -27,6 +27,7 @@ import { AddfuncionmodalPage } from './addfuncionmodal/addfuncionmodal.page';
 import { EditpuntomodalPage } from './editpuntomodal/editpuntomodal.page';
 import { BusquedamodalPage } from './busquedamodal/busquedamodal.page';
 import { AugmentedrealityPageModule } from './augmentedreality/augmentedreality.module';
+import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { AugmentedrealityPageModule } from './augmentedreality/augmentedreality.
     StatusBar,
     SplashScreen,
     Geolocation,
+    DeviceMotion,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ModalController
   ],
