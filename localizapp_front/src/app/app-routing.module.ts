@@ -59,6 +59,10 @@ const routes: Routes = [
     path: 'busquedamodal',
     loadChildren: () => import('./busquedamodal/busquedamodal.module').then( m => m.BusquedamodalPageModule)
   },
+  {
+    path: 'augmentedreality',
+    loadChildren: () => import('./augmentedreality/augmentedreality.module').then( m => m.AugmentedrealityPageModule)
+  },
 
 ];
 
