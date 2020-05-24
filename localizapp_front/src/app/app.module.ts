@@ -26,6 +26,7 @@ import { EditarfuncionmodalPage } from './editarfuncionmodal/editarfuncionmodal.
 import { AddfuncionmodalPage } from './addfuncionmodal/addfuncionmodal.page';
 import { EditpuntomodalPage } from './editpuntomodal/editpuntomodal.page';
 import { BusquedamodalPage } from './busquedamodal/busquedamodal.page';
+import { AugmentedrealityPage } from './augmentedreality/augmentedreality.page';
 
 
 @NgModule({
@@ -47,10 +48,11 @@ import { BusquedamodalPage } from './busquedamodal/busquedamodal.page';
     EditarfuncionmodalPage,
     AddfuncionmodalPage,
     EditpuntomodalPage,
-    BusquedamodalPage],
+    BusquedamodalPage,
+    AugmentedrealityPage],
   entryComponents: [EventModalPage, NeweventmodalPage, VerEventoPage,EditarEventoPage,NewpuntomodalPage,
     NewFuncionmodalPage,VerPuntoModalPage, VerfuncionmodalPage, EditarfuncionmodalPage,
-    AddfuncionmodalPage, EditpuntomodalPage, BusquedamodalPage],
+    AddfuncionmodalPage, EditpuntomodalPage, BusquedamodalPage, AugmentedrealityPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
   providers: [
     StatusBar,

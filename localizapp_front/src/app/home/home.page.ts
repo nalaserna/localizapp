@@ -331,6 +331,9 @@ private eventSubscribe() {
 
     }
 
+    public augmentedreality(){
+      this.router.navigate(['/augmentedreality']);
+    }
     
 }
 
