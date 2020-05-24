@@ -26,7 +26,7 @@ import { EditarfuncionmodalPage } from './editarfuncionmodal/editarfuncionmodal.
 import { AddfuncionmodalPage } from './addfuncionmodal/addfuncionmodal.page';
 import { EditpuntomodalPage } from './editpuntomodal/editpuntomodal.page';
 import { BusquedamodalPage } from './busquedamodal/busquedamodal.page';
-import { AugmentedrealityPage } from './augmentedreality/augmentedreality.page';
+import { AugmentedrealityPageModule } from './augmentedreality/augmentedreality.module';
 
 
 @NgModule({
@@ -48,12 +48,11 @@ import { AugmentedrealityPage } from './augmentedreality/augmentedreality.page';
     EditarfuncionmodalPage,
     AddfuncionmodalPage,
     EditpuntomodalPage,
-    BusquedamodalPage,
-    AugmentedrealityPage],
+    BusquedamodalPage],
   entryComponents: [EventModalPage, NeweventmodalPage, VerEventoPage,EditarEventoPage,NewpuntomodalPage,
     NewFuncionmodalPage,VerPuntoModalPage, VerfuncionmodalPage, EditarfuncionmodalPage,
-    AddfuncionmodalPage, EditpuntomodalPage, BusquedamodalPage, AugmentedrealityPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule],
+    AddfuncionmodalPage, EditpuntomodalPage, BusquedamodalPage],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, FormsModule, AugmentedrealityPageModule],
   providers: [
     StatusBar,
     SplashScreen,
