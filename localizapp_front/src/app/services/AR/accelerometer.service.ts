@@ -11,12 +11,12 @@ export class AccelerometerService {
   constructor(private deviceMotion: DeviceMotion) {
 
     // Watch device acceleration
-    var subscription = this.deviceMotion.watchAcceleration().subscribe((acceleration: DeviceMotionAccelerationData) => {
+  /*  var subscription = this.deviceMotion.watchAcceleration().subscribe((acceleration: DeviceMotionAccelerationData) => {
       console.log(acceleration);
     });
     
     // Stop watch
-    subscription.unsubscribe();
+    subscription.unsubscribe();*/
    }
 
    public getAcceleration():Observable<DeviceMotionAccelerationData>{

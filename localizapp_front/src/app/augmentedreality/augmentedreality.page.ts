@@ -13,7 +13,8 @@ export class AugmentedrealityPage implements OnInit {
 
   ngOnInit() {
 
-    this.acc = this.accelerometerService.getAcceleration();
+    this.acc = this.accelerometerService.getAcceleration().subscribe();
+    console.log("ACCELEROMETER ");
     console.log(this.acc);
 
   }
