@@ -84,7 +84,7 @@ private getCurrentLocation() {
   this.geolocation.getCurrentPosition().then((resp) => {
     this.latitud = resp.coords.latitude;
     this.longitud = resp.coords.longitude;
-    if(!this.misPuntos || !this.newmarker) {
+    if(!this.selectedEventId && !this.newmarker) {
       this.map.setView([this.latitud, this.longitud], 19);   
     }
     if(!this.myLocationMarker) {
