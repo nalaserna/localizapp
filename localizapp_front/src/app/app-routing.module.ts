@@ -59,6 +59,10 @@ const routes: Routes = [
     path: 'busquedamodal',
     loadChildren: () => import('./busquedamodal/busquedamodal.module').then( m => m.BusquedamodalPageModule)
   },
+  {
+    path: 'arwikitude',
+    loadChildren: () => import('./arwikitude/arwikitude.module').then( m => m.ArwikitudePageModule)
+  },
 
 ];
 

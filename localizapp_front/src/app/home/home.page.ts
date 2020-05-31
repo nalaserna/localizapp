@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Platform, ModalController } from '@ionic/angular';
+import { Platform, ModalController, NavController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Map, tileLayer, marker, icon, CircleMarker, Marker } from 'leaflet';
 import { Http } from '@angular/http';
@@ -15,6 +15,7 @@ import { NewpuntomodalPage } from '../newpuntomodal/newpuntomodal.page';
 import { NewFuncionmodalPage } from '../new-funcionmodal/new-funcionmodal.page';
 import { VerPuntoModalPage } from '../ver-punto-modal/ver-punto-modal.page';
 import { BusquedamodalPage } from '../busquedamodal/busquedamodal.page';
+import { ArwikitudePage } from '../arwikitude/arwikitude.page';
 
 @Component({
   selector: 'app-home',
@@ -46,7 +47,8 @@ export class HomePage {
     private route: ActivatedRoute, 
     private puntoService: PuntoService,
     private eventoService: EventoService,
-    public modalController: ModalController) {
+    public modalController: ModalController,
+    public nav: NavController) {
     
       this.markers=[];
       this.miEvento = "prueba";
@@ -308,6 +310,10 @@ private eventSubscribe() {
           }
           });
       return await modal.present();
+    }
+
+    openAR(){
+      this.router.navigateByUrl('/arwikitude');
     }
 
     async verPunto(id){

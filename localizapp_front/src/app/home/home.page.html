@@ -5,13 +5,17 @@
  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
  crossorigin=""></script>
+ <head>
+  <script src="cordova.js"></script>
+ </head>
  
 <ion-header [translucent]="true">
+
   <ion-toolbar>
    <!-- <ion-title size="small">Mapa</ion-title>-->
    <ion-tabs>
     <ion-tab-bar slot="top">
-      <ion-tab-button tab="search" (click)="busquedaModal()">
+      <ion-tab-button tab="search" (click)="openAR()">
      <!-- <ion-button (click)="busquedaModal()" color="medium" fill="outline" shape="circle" size="small">-->
       <ion-icon name="search"></ion-icon>
     <!--  </ion-button>-->
