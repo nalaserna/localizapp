@@ -1,0 +1,36 @@
+# Use root/Poli123 as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Poli123
+      MYSQL_DATABASE: localizapp
+    ports:
+      - 3306:3306
+
+  backend:
+    build:
+      context: ./localizapp
+      dockerfile: Dockerfile
+    command: mvn spring-boot:run
+    depends_on:
+      - db
+    ports:
+      - 8084:8084
+
+  frontend:
+    build:
+      context: ./localizapp_front
+      dockerfile: Dockerfile
+    command: ionic serve -l --lab-host=0.0.0.0 --lab-port=8200
+    depends_on:
+      - backend
+    ports:
+      - 8100:8100
+      - 8200:8200
+  
