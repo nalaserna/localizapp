@@ -19,9 +19,6 @@ import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
-import org.osm.lights.diff.OSMNode;
-import org.osm.lights.upload.BasicAuthenticator;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -195,7 +192,7 @@ public class OsmDownload {
 	 * @throws ParserConfigurationException
 	 */
 	public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException {
-		Authenticator.setDefault(new BasicAuthenticator("youruser", "yourpassword"));
+		Authenticator.setDefault(new BasicAuthenticator("nalaserna@poligran.edu.co", "Poli123*"));
 		List<OSMNode> osmNodesInVicinity = getOSMNodesInVicinity(49, 8.3, 0.005);
 		for (OSMNode osmNode : osmNodesInVicinity) {
 			System.out.println(osmNode.getId() + ":" + osmNode.getLat() + ":" + osmNode.getLon());
