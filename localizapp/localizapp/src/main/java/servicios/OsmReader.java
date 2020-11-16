@@ -26,8 +26,8 @@ public class OsmReader implements Sink{
 	        } else if (entityContainer instanceof WayContainer) {
 	            Way myWay = ((WayContainer) entityContainer).getEntity();
 	            for (Tag myTag : myWay.getTags()) {
-	                if ("highway".equalsIgnoreCase(myTag.getKey())) {
-	                    System.out.println(" Woha, it's a highway: " + myWay.getId());
+	                if ("route=foot".equalsIgnoreCase(myTag.getKey())) {
+	                	System.out.println(" It's a walking route: " + myWay.getId());
 	                    break;
 	                }
 	            }
