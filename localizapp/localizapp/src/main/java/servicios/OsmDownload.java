@@ -110,8 +110,10 @@ public class OsmDownload {
 
 	    }else {
 	    	con = connection.getInputStream();
-	    	String p = new BufferedReader(new InputStreamReader(con)).lines().collect(Collectors.joining("\n"));
+	    	//String p = new BufferedReader(new InputStreamReader(con)).lines().collect(Collectors.joining("\n"));
 			docBuilder = dbfac.newDocumentBuilder();
+			//System.out.println("AQUIIIII " +p);
+			return docBuilder.parse(con);
 	    }
 		
 		
