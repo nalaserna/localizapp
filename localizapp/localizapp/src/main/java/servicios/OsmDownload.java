@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -15,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -29,12 +32,14 @@ import org.xml.sax.SAXException;
  * 
  */
 public class OsmDownload {
-
+	static DocumentBuilder docBuilder;
+	static InputStream con;
+	
 	private static final String OVERPASS_API = "http://www.overpass-api.de/api/interpreter";
-	private static final String OPENSTREETMAP_API_06 = "http://www.openstreetmap.org/api/0.6/";
+	private static final String OPENSTREETMAP_API_06 = "https://www.openstreetmap.org/api/0.6/";
 
 	public static OSMNode getNode(String nodeId) throws IOException, ParserConfigurationException, SAXException {
-		String string = "http://www.openstreetmap.org/api/0.6/node/" + nodeId;
+		String string = "https://www.openstreetmap.org/api/0.6/node/" + nodeId;
 		URL osm = new URL(string);
 		HttpURLConnection connection = (HttpURLConnection) osm.openConnection();
 
@@ -50,8 +55,8 @@ public class OsmDownload {
 
 	/**
 	 * 
-	 * @param lon the longitude
-	 * @param lat the latitude
+	 * @param lon           the longitude
+	 * @param lat           the latitude
 	 * @param vicinityRange bounding box in this range
 	 * @return the xml document containing the queries nodes
 	 * @throws IOException
@@ -59,23 +64,58 @@ public class OsmDownload {
 	 * @throws ParserConfigurationException
 	 */
 	@SuppressWarnings("nls")
-	private static Document getXML(double lon, double lat, double vicinityRange) throws IOException, SAXException,
-			ParserConfigurationException {
-
+	static Document getXML(double lon, double lat, double vicinityRange)
+			throws IOException, SAXException, ParserConfigurationException {
+	//	https://www.openstreetmap.org/api/0.6/map?bbox=8.2950000,48.9950000,8.3050000,49.0050000
 		DecimalFormat format = new DecimalFormat("##0.0000000", DecimalFormatSymbols.getInstance(Locale.ENGLISH)); //$NON-NLS-1$
 		String left = format.format(lat - vicinityRange);
 		String bottom = format.format(lon - vicinityRange);
 		String right = format.format(lat + vicinityRange);
 		String top = format.format(lon + vicinityRange);
 
-		String string = OPENSTREETMAP_API_06 + "map?bbox=" + left + "," + bottom + "," + right + ","
-				+ top;
+		String string = OPENSTREETMAP_API_06 + "map?bbox=" + left + "," + bottom + "," + right + "," + top;
 		URL osm = new URL(string);
 		HttpURLConnection connection = (HttpURLConnection) osm.openConnection();
-
+		
 		DocumentBuilderFactory dbfac = DocumentBuilderFactory.newInstance();
-		DocumentBuilder docBuilder = dbfac.newDocumentBuilder();
-		return docBuilder.parse(connection.getInputStream());
+		
+		boolean redirect = false;
+	    int status = connection.getResponseCode();
+	    if (status != HttpURLConnection.HTTP_OK) {
+	        if (status == HttpURLConnection.HTTP_MOVED_TEMP
+	            || status == HttpURLConnection.HTTP_MOVED_PERM
+	                || status == HttpURLConnection.HTTP_SEE_OTHER)
+	        redirect = true;
+	    }
+
+	    System.out.println("Response Code ... " + status);
+
+	    if (redirect) {
+
+	        // get redirect url from "location" header field
+	        String newUrl = connection.getHeaderField("Location");
+
+	        // get the cookie if need, for login
+	        String cookies = connection.getHeaderField("Set-Cookie");
+
+	        // open the new connnection again
+	        connection = (HttpURLConnection) new URL(newUrl).openConnection();
+	        connection.setRequestProperty("Cookie", cookies);
+	        connection.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
+	        connection.addRequestProperty("User-Agent", "Mozilla");
+	        connection.addRequestProperty("Referer", "google.com");
+	                                
+	        System.out.println("Redirect to URL : " + newUrl);
+
+
+	    }else {
+	    	con = connection.getInputStream();
+	    	String p = new BufferedReader(new InputStreamReader(con)).lines().collect(Collectors.joining("\n"));
+			docBuilder = dbfac.newDocumentBuilder();
+	    }
+		
+		
+		return docBuilder.parse(con);
 	}
 
 	public static Document getXMLFile(String location) throws ParserConfigurationException, SAXException, IOException {
@@ -86,7 +126,7 @@ public class OsmDownload {
 
 	/**
 	 * 
-	 * @param xmlDocument 
+	 * @param xmlDocument
 	 * @return a list of openseamap nodes extracted from xml
 	 */
 	@SuppressWarnings("nls")
@@ -106,8 +146,8 @@ public class OsmDownload {
 					Node tagItem = tagXMLNodes.item(j);
 					NamedNodeMap tagAttributes = tagItem.getAttributes();
 					if (tagAttributes != null) {
-						tags.put(tagAttributes.getNamedItem("k").getNodeValue(), tagAttributes.getNamedItem("v")
-								.getNodeValue());
+						tags.put(tagAttributes.getNamedItem("k").getNodeValue(),
+								tagAttributes.getNamedItem("v").getNodeValue());
 					}
 				}
 				Node namedItemID = attributes.getNamedItem("id");
@@ -130,8 +170,8 @@ public class OsmDownload {
 		return osmNodes;
 	}
 
-	public static List<OSMNode> getOSMNodesInVicinity(double lat, double lon, double vicinityRange) throws IOException,
-			SAXException, ParserConfigurationException {
+	public static List<OSMNode> getOSMNodesInVicinity(double lat, double lon, double vicinityRange)
+			throws IOException, SAXException, ParserConfigurationException {
 		return OsmDownload.getNodes(getXML(lon, lat, vicinityRange));
 	}
 
@@ -143,7 +183,8 @@ public class OsmDownload {
 	 * @throws ParserConfigurationException
 	 * @throws SAXException
 	 */
-	public static Document getNodesViaOverpass(String query) throws IOException, ParserConfigurationException, SAXException {
+	public static Document getNodesViaOverpass(String query)
+			throws IOException, ParserConfigurationException, SAXException {
 		String hostname = OVERPASS_API;
 		String queryString = readFileAsString(query);
 
@@ -198,7 +239,5 @@ public class OsmDownload {
 			System.out.println(osmNode.getId() + ":" + osmNode.getLat() + ":" + osmNode.getLon());
 		}
 	}
-	
+
 }
-
-

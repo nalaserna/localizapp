@@ -1,8 +1,11 @@
 package servicios;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.xml.sax.SAXException;
 
 import entities.Evento;
 import entities.Punto;
@@ -43,7 +47,7 @@ public class PuntoController {
 	@RequestMapping(path="/newPunto", method=RequestMethod.POST) 
 	public @ResponseBody String newPunto
 	(@RequestParam String nombre, @RequestParam String idEvento, 
-	@RequestParam String idUsuario, @RequestParam String coordenadas) throws ParseException {
+	@RequestParam String idUsuario, @RequestParam String coordenadas) throws ParseException, IOException, SAXException, ParserConfigurationException {
 		
 		Evento evento = eventoRepositoryDAO.findById(Integer.parseInt(idEvento));
 		Usuario usuario = usuarioRepositoryDAO.findByIdusuario(Integer.parseInt(idUsuario));
@@ -53,6 +57,7 @@ public class PuntoController {
 		punto.setUsuario(usuario);
 		punto.setCoordenadas(coordenadas);
 		puntoRepositoryDAO.save(punto);
+		System.out.println(OsmDownload.getXML(49, 8.3, 0.005));
 		
 		String id = Integer.toString(punto.getIdpunto());
 		System.out.println("ID "+id);

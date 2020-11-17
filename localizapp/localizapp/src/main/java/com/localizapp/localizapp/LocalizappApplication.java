@@ -16,6 +16,7 @@ public class LocalizappApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(LocalizappApplication.class, args);
+		
 	}
 
 }
