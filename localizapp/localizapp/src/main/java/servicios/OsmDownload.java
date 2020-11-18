@@ -104,7 +104,7 @@ public class OsmDownload {
 	        connection.addRequestProperty("Accept-Language", "en-US,en;q=0.8");
 	        connection.addRequestProperty("User-Agent", "Mozilla");
 	        connection.addRequestProperty("Referer", "google.com");
-	                                
+	                        
 	        System.out.println("Redirect to URL : " + newUrl);
 
 
@@ -113,6 +113,8 @@ public class OsmDownload {
 	    	//String p = new BufferedReader(new InputStreamReader(con)).lines().collect(Collectors.joining("\n"));
 			docBuilder = dbfac.newDocumentBuilder();
 			//System.out.println("AQUIIIII " +p);
+			System.out.println("AJA SI SIRVIO? " +XmlReader.getDocument((con)));
+			
 			return docBuilder.parse(con);
 	    }
 		

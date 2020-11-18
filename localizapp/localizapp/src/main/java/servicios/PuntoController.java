@@ -57,7 +57,8 @@ public class PuntoController {
 		punto.setUsuario(usuario);
 		punto.setCoordenadas(coordenadas);
 		puntoRepositoryDAO.save(punto);
-		System.out.println(OsmDownload.getXML(49, 8.3, 0.005));
+		//System.out.println(OsmDownload.getXML(49, 8.3, 0.005));
+		
 		
 		String id = Integer.toString(punto.getIdpunto());
 		System.out.println("ID "+id);
